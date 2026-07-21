@@ -1,0 +1,195 @@
+# ============================================================================
+# Java & Compilation
+# ============================================================================
+*.class                          # Compiled Java bytecode files
+*.jar                            # Java archive files
+*.war                            # Web application archive files
+*.ear                            # Enterprise application archive files
+*.jmod                           # Java modules
+*.zip                            # Compressed archives
+*.tar.gz                         # Gzip compressed archives
+target/                          # Maven build directory
+build/                           # Gradle build directory
+bin/                             # Compiled binary files
+out/                             # IntelliJ and other IDE output
+
+# ============================================================================
+# IDE & Editor Files
+# ============================================================================
+# IntelliJ IDEA
+.idea/                           # IntelliJ IDEA project configuration
+*.iml                            # IntelliJ module file
+*.iws                            # IntelliJ workspace settings
+*.ipr                            # IntelliJ project file
+
+# Eclipse
+.classpath                       # Eclipse classpath configuration
+.project                         # Eclipse project file
+.settings/                       # Eclipse settings directory
+*.launch                         # Eclipse launch configuration
+
+# VS Code
+.vscode/                         # VS Code configuration
+*.code-workspace                 # VS Code workspace file
+launch.json                      # VS Code launch configuration
+
+# Sublime Text
+*.sublime-project                # Sublime project file
+*.sublime-workspace              # Sublime workspace file
+
+# Vim
+*.swp                            # Vim swap files
+*.swo                            # Vim backup files
+*~                               # Vim backup files
+.vim/                            # Vim directory
+
+# Emacs
+\#*\#                            # Emacs autosave files
+.\#*                             # Emacs lock files
+
+# NetBeans
+nbproject/                       # NetBeans project directory
+.nb-gradle/                      # NetBeans Gradle plugin
+nb-configuration.xml             # NetBeans configuration
+
+# JetBrains IDEs
+*.jb                             # JetBrains IDE files
+*.bak                            # Backup files
+
+# ============================================================================
+# Build & Dependency Management
+# ============================================================================
+# Maven
+pom.xml.tag                      # Maven release tag
+pom.xml.releaseBackup            # Maven release backup
+release.properties               # Maven release properties
+.mvn/                            # Maven wrapper directory
+mvnw                             # Maven wrapper script
+mvnw.cmd                         # Maven wrapper batch file
+.m2/                             # Local Maven repository cache
+
+# Gradle
+.gradle/                         # Gradle cache directory
+gradle/                          # Gradle wrapper directory
+gradlew                          # Gradle wrapper script
+gradlew.bat                      # Gradle wrapper batch file
+*.gradle                         # Gradle build files
+
+# SBT
+.sbt/                            # SBT cache
+dist/                            # Distribution directory
+
+# ============================================================================
+# Testing & Coverage
+# ============================================================================
+coverage/                        # Code coverage reports
+jacoco/                          # JaCoCo coverage directory
+*.coverage                       # Coverage files
+.coverage                        # Coverage metadata
+htmlcov/                         # HTML coverage reports
+cobertura/                       # Cobertura coverage reports
+lcov.info                        # LCOV coverage file
+
+# Test reports
+test-results/                    # Test result files
+surefire-reports/                # Maven Surefire test reports
+failsafe-reports/                # Maven Failsafe test reports
+TEST-*.xml                       # Test result XML files
+
+# ============================================================================
+# Runtime & Temporary Files
+# ============================================================================
+*.log                            # Log files
+logs/                            # Log directory
+*.tmp                            # Temporary files
+temp/                            # Temporary directory
+tmp/                             # Temporary directory
+*.pid                            # Process ID files
+*.seed                           # Seed files
+*.pid.lock                       # Lock files
+
+# ============================================================================
+# Database & Runtime Data
+# ============================================================================
+*.db                             # SQLite database files
+*.sqlite                         # SQLite database files
+*.sqlite3                        # SQLite3 database files
+*.h2.db                          # H2 database files
+*.mdb                            # MS Access database files
+data/                            # Data directory
+database/                        # Database directory
+
+# ============================================================================
+# OS-Specific Files
+# ============================================================================
+# macOS
+.DS_Store                        # macOS folder settings
+.AppleDouble                     # macOS resource fork
+.LSOverride                      # macOS Finder attributes
+._*                              # macOS temporary files
+.Spotlight-V100                  # macOS Spotlight index
+.Trashes                         # macOS trash files
+ehthumbs.db                      # Windows thumbnail cache
+
+# Windows
+Thumbs.db                        # Windows thumbnail cache
+Desktop.ini                      # Windows folder settings
+*.exe                            # Windows executable files
+*.dll                            # Windows dynamic library files
+$RECYCLE.BIN/                    # Windows recycle bin
+
+# Linux
+.directory                       # Dolphin file manager settings
+
+# ============================================================================
+# Documentation & Generated Files
+# ============================================================================
+javadoc/                         # Generated JavaDoc files
+docs/                            # Documentation directory (if generated)
+*.doc                            # Word document files
+*.docx                           # Word document files
+*.pdf                            # PDF files (if generated)
+
+# ============================================================================
+# CI/CD & DevOps
+# ============================================================================
+.travis.yml                      # Travis CI configuration
+.circleci/                       # CircleCI configuration
+.github/workflows/*.log          # GitHub Actions logs
+jenkins/                         # Jenkins configuration
+
+# ============================================================================
+# Package Managers & Distributions
+# ============================================================================
+node_modules/                    # Node.js dependencies
+package-lock.json                # NPM lock file
+yarn.lock                        # Yarn lock file
+*.npm                            # NPM package files
+
+# ============================================================================
+# Miscellaneous
+# ============================================================================
+*.orig                           # Original files from merge conflicts
+MANIFEST.MF                      # Java manifest file (if modified)
+*.properties.local               # Local configuration
+*.env                            # Environment configuration files
+*.env.local                      # Local environment files
+config/local/                    # Local configuration directory
+secrets/                         # Secrets directory
+.ackrc                           # Ack configuration
+.env.example.bak                 # Backup of environment example
+
+# ============================================================================
+# Maven and Gradle Wrapper Verification
+# ============================================================================
+!gradle/wrapper/gradle-wrapper.jar  # Include Maven/Gradle wrapper JAR
+!.mvn/wrapper/maven-wrapper.jar     # Include Maven wrapper JAR
+
+# ============================================================================
+# Force Include Important Files
+# ============================================================================
+!.gitkeep                        # Keep empty directories
+!.gitattributes                  # Git attributes file
+!/pom.xml                        # Include Maven POM
+!/build.gradle                   # Include Gradle build file
+!/settings.gradle                # Include Gradle settings
