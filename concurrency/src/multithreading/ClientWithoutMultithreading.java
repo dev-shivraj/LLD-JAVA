@@ -1,7 +1,10 @@
-public class Client {
+package multithreading;
+
+public class ClientWithoutMultithreading {
     static void main() throws InterruptedException {
         // get the number of cores in your system
-        System.out.println(Runtime.getRuntime().availableProcessors());
+        int numCores = Runtime.getRuntime().availableProcessors();
+        System.out.println("Number of cores in your system: " + numCores);
 
         // normal program to print numbers from 1 to 100 without multithreading
         for(int i = 1; i <= 100; i++) {
