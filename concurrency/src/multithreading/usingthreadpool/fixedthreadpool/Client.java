@@ -1,4 +1,4 @@
-package multithreading.usingthreadpool;
+package multithreading.usingthreadpool.fixedthreadpool;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -7,7 +7,7 @@ import java.util.concurrent.Executors;
     Each task will print a number from 1 to 1 million.
     We will see that the program will complete in around 2-3 seconds, which is much faster than the normal program with each task running in a separate thread, which takes around 30 seconds to complete the task.
  */
-public class ClientFixThreadPool {
+public class Client {
     static void main() {
         // without fixed thread pool, we will create a new thread for each task, which is not efficient
         // normal program to print numbers from 1 to 1000000 with each task running in a separate thread
