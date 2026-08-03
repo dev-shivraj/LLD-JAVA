@@ -13,13 +13,15 @@ public class Subtractor implements Callable<Void> {
     }
 
     public void subtract() {
-        for (int i = 1; i <= 1000; i++) {
+        for (int i = 1; i <= 100; i++) {
             // try to acquire the lock before adding
             // we can only try because if the lock is already held by another thread, we will wait until it is released
             lock.lock();
 
             this.value.setX(this.value.getX() - 1);
+            System.out.println("Thread " + Thread.currentThread().getName() + " subtracted 1, new value: " + this.value.getX());
 
+            // release the lock after subtracting
             lock.unlock();
         }
     }

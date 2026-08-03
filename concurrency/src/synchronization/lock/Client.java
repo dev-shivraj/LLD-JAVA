@@ -10,6 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /*
  * we can lock the critical section of the code using a Lock object to ensure that only one thread can access it at a time
  * This prevents race conditions and ensures data consistency.
+ * If we forget to release the lock, the other thread will wait forever and the program will hang.
  */
 public class Client {
     static void main() throws ExecutionException, InterruptedException {

@@ -13,14 +13,16 @@ public class Adder implements Callable<Void> {
     }
 
     public void add() {
-        for (int i = 1; i <= 1000; i++) {
+        for (int i = 1; i <= 100; i++) {
             // try to acquire the lock before adding
             // we can only try because if the lock is already held by another thread, we will wait until it is released
             lock.lock();
 
             this.value.setX(this.value.getX() + 1);
+            System.out.println("Thread " + Thread.currentThread().getName() + " added 1, new value: " + this.value.getX());
 
             // release the lock after adding
+            // what if we forget to release the lock? then the other thread will wait forever and the program will hang
             lock.unlock();
         }
     }
