@@ -7,12 +7,18 @@ public class SingleNumberPrinter implements Runnable {
         this.number = number;
     }
 
-    public void printNumber() {
+    public void printNumber() throws InterruptedException {
+        // Simulate some work with Thread.sleep
+        Thread.sleep(1000);
         System.out.println("Number: " + number + " printed by thread: " + Thread.currentThread().getName());
     }
 
     @Override
     public void run() {
-        printNumber();
+        try {
+            printNumber();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
