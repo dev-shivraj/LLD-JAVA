@@ -19,6 +19,6 @@ public class Client {
         List<Integer> result = future.get();
         System.out.println("Sorted list: " + result);
 
-        ex.shutdown();
+//        ex.shutdown();
     }
 }
