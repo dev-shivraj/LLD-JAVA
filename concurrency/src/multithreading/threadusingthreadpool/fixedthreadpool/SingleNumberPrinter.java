@@ -1,4 +1,4 @@
-package multithreading.usingthreadpool.fixedthreadpool;
+package multithreading.threadusingthreadpool.fixedthreadpool;
 
 public class SingleNumberPrinter implements Runnable {
     private int number;

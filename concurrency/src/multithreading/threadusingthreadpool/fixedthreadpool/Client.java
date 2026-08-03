@@ -1,4 +1,4 @@
-package multithreading.usingthreadpool.fixedthreadpool;
+package multithreading.threadusingthreadpool.fixedthreadpool;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
