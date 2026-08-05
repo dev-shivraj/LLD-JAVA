@@ -13,7 +13,7 @@ public class Adder implements Callable<Void> {
     }
 
     public void add() {
-        for (int i = 1; i <= 100; i++) {
+        for (int i = 1; i <= 100000; i++) {
             // try to acquire the lock before adding
             // we can only try because if the lock is already held by another thread, we will wait until it is released
             lock.lock();
