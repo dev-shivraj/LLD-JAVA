@@ -11,6 +11,9 @@ import java.util.concurrent.Future;
  * This ensures that the shared resource is accessed in a thread-safe manner, preventing race conditions and data inconsistencies.
  * The synchronized keyword can be applied to methods or blocks of code, and it can be used with instance methods (synchronized on the instance) or static methods (synchronized on the class).
  * However, excessive use of synchronized can lead to performance issues due to thread contention, so it should be used judiciously.
+ *
+ * Note: synchronized is also reentrant, meaning that if a thread already holds the lock for an object, it can enter another synchronized block or method on the same object without getting blocked.
+ *
  */
 public class Client {
     static void main() throws ExecutionException, InterruptedException {

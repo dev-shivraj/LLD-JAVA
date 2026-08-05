@@ -16,12 +16,27 @@ public class Adder implements Callable<Void> {
                 System.out.println("Entered synchronized block in Adder, current value: " + this.value.getX());
                 this.value.setX(this.value.getX() + 1);
 
+                // ============================================================================================================================================================
+                // simulate if some other task needs to done and same thread can enter the critical section again, then it can do that because the lock is reentrant
+                someOtherTask();
+                // ============================================================================================================================================================
+
                 // Simulate some processing time to increase the chance of context switching and thread contention
                 Thread.sleep(1);
                 System.out.println("Thread " + Thread.currentThread().getName() + " added 1, new value: " + this.value.getX());
                 System.out.println("Exiting synchronized block in Adder, current value: " + this.value.getX());
                 System.out.println("=======================================================================================");
             }
+        }
+    }
+
+    private void someOtherTask() throws InterruptedException {
+        synchronized (this.value) {
+            System.out.println("========== some other task =========");
+            // simulate some other task that needs to be done while holding the lock
+            System.out.println("Thread " + Thread.currentThread().getName() + " is doing some other task while holding the lock");
+            Thread.sleep(1);
+            System.out.println("===== some other task finished =====");
         }
     }
 
