@@ -6,7 +6,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 /*
+ * synchronized method is a method that is used to control access to an object by multiple threads.
+ * It is used to prevent race conditions
  *
+ * Most Importantly, it locks the calling object of the synchronized method, so that only one thread can access the method at a time.
  */
 public class Client {
     static void main() throws ExecutionException, InterruptedException {

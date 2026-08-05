@@ -11,7 +11,7 @@ public class Subtractor implements Callable<Void> {
 
     public void subtract() throws InterruptedException {
         for (int i = 1; i <= 10000; i++) {
-            this.value.setX(this.value.getX() - 1);
+            this.value.increment();
         }
     }
 

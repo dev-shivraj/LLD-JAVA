@@ -14,4 +14,12 @@ public class Value {
     public void setX(int x) {
         this.x = x;
     }
+
+    public synchronized void increment() {
+        this.x++;
+    }
+
+    public synchronized void decrement() {
+        this.x--;
+    }
 }
