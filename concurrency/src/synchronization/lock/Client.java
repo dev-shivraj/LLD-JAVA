@@ -17,8 +17,12 @@ public class Client {
         Value value = new Value(0);
 
         Lock lock = new ReentrantLock();
+//        Lock lock2 = new ReentrantLock();
 
         Adder adder = new Adder(value, lock);
+
+        // if we use a different lock for the subtractor, then the two threads can access the critical section at the same time and we will have a race condition
+//        Subtractor subtractor = new Subtractor(value, lock2);
         Subtractor subtractor = new Subtractor(value, lock);
 
         ExecutorService ex = Executors.newFixedThreadPool(2);
