@@ -12,8 +12,10 @@ public class Adder implements Callable<Void> {
     public void add() {
         for (int i = 1; i <= 100000; i++) {
             synchronized (this.value) {
+                System.out.println("Entering synchronized block in Adder, current value: " + this.value.getX());
                 this.value.setX(this.value.getX() + 1);
                 System.out.println("Thread " + Thread.currentThread().getName() + " added 1, new value: " + this.value.getX());
+                System.out.println("Exiting synchronized block in Adder, current value: " + this.value.getX());
             }
         }
     }

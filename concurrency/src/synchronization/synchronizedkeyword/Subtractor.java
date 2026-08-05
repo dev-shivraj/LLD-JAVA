@@ -12,8 +12,10 @@ public class Subtractor implements Callable<Void> {
     public void subtract() {
         for (int i = 1; i <= 100000; i++) {
             synchronized (this.value) {
+                System.out.println("Entering synchronized block in Subtractor, current value: " + this.value.getX());
                 this.value.setX(this.value.getX() - 1);
                 System.out.println("Thread " + Thread.currentThread().getName() + " subtracted 1, new value: " + this.value.getX());
+                System.out.println("Exiting synchronized block in Subtractor, current value: " + this.value.getX());
             }
         }
     }
