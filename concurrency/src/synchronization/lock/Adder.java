@@ -13,7 +13,7 @@ public class Adder implements Callable<Void> {
     }
 
     public void add() throws InterruptedException {
-        for (int i = 1; i <= 100; i++) {
+        for (int i = 1; i <= 1000; i++) {
             // try to acquire the lock before adding
             // we can only try because if the lock is already held by another thread, we will wait until it is released
             lock.lock();
@@ -24,6 +24,18 @@ public class Adder implements Callable<Void> {
             this.value.setX(this.value.getX() + 1);
             System.out.println("Thread " + Thread.currentThread().getName() + " added 1, new value: " + this.value.getX());
 
+
+            // ============================================================================================================================================================
+            // simulate if some other task needs to done and same thread can enter in the critical section again, then it can do that because the lock is reentrant
+
+            // print the hold count and queue length of the lock
+            System.out.println("Lock hold count: " + ((java.util.concurrent.locks.ReentrantLock) lock).getHoldCount());
+            System.out.println("Lock queue length: " + ((java.util.concurrent.locks.ReentrantLock) lock).getQueueLength());
+            someOtherTask();
+
+            // ============================================================================================================================================================
+
+
             Thread.sleep(1); // simulate some work being done while holding the lock
 
             System.out.println("ABOUT TO UNLOCK: Thread " + Thread.currentThread().getName() + " releasing the lock at iteration " + i);
@@ -33,6 +45,23 @@ public class Adder implements Callable<Void> {
             lock.unlock();
         }
     }
+
+
+    private void someOtherTask() throws InterruptedException {
+        lock.lock();
+        System.out.println("========== some other task =========");
+        // print the hold count and queue length of the lock
+        System.out.println("Lock hold count: " + ((java.util.concurrent.locks.ReentrantLock) lock).getHoldCount());
+        System.out.println("Lock queue length: " + ((java.util.concurrent.locks.ReentrantLock) lock).getQueueLength());
+
+        // simulate some other task that needs to be done while holding the lock
+        System.out.println("Thread " + Thread.currentThread().getName() + " is doing some other task while holding the lock");
+        Thread.sleep(1);
+        System.out.println("===== some other task finished =====");
+
+        lock.unlock();
+    }
+
 
     @Override
     public Void call() throws Exception {
