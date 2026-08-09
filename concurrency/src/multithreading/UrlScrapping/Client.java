@@ -16,11 +16,13 @@ public class Client {
 
         ExecutorService fixedPool = Executors.newFixedThreadPool(10);
         long fixedTime = executeTask(urls, fixedPool);
-        System.out.println("Time taken with fixed thread pool: " + fixedTime + " ms");
+
 
 
         ExecutorService cachedPool = Executors.newCachedThreadPool();
         long cachedTime = executeTask(urls, cachedPool);
+
+        System.out.println("Time taken with fixed thread pool: " + fixedTime + " ms");
         System.out.println("Time taken with cached thread pool: " + cachedTime + " ms");
 
     }
