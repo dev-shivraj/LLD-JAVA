@@ -1,13 +1,13 @@
-package generics;
+package generics.problem_without_generics;
 
-public class Pair {
+public class ObjectPair {
     Object x;
     Object y;
 
-    public Pair() {}
+    public ObjectPair() {}
 
 
-    public Pair(Object x, Object y) {
+    public ObjectPair(Object x, Object y) {
         this.x = x;
         this.y = y;
     }

@@ -1,10 +1,10 @@
-package generics;
+package generics.problem_without_generics;
 
-public class Client {
+public class ObjectClient {
     static void main() {
-//        generics.Pair p = new generics.Pair(1, 2);
+//        generics.implementation_with_generics.Pair p = new generics.implementation_with_generics.Pair(1, 2);
 
-        Pair p = new Pair(); // x, y
+        ObjectPair p = new ObjectPair(); // x, y
         p.setX(10);
         p.setY(20);
 
