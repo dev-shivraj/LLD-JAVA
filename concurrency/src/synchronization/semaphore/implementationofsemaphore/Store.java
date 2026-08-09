@@ -2,23 +2,30 @@ package synchronization.semaphore.implementationofsemaphore;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Store {
     private int maxSize;
     private List<Object> items;
+    private Lock lock = new ReentrantLock();
 
     // ======================== methods ==============================
     public void addItem(Object item) {
 //        if(items.size() < maxSize) {
-            items.add(item);
-            System.out.println("Produced an item. Total items: " + items.size());
+        lock.lock();
+        items.add(item); // O(1)
+        System.out.println("Produced an item. Total items: " + items.size());
+        lock.unlock();
 //        }
     }
 
     public void removeItem() {
 //        if(items.size() > 0) {
-            items.remove(items.size() - 1);
-            System.out.println("Consumed an item. Total items: " + items.size());
+        lock.lock();
+        items.remove(items.size() - 1); // O(1)
+        System.out.println("Consumed an item. Total items: " + items.size());
+        lock.unlock();
 //        }
     }
 
