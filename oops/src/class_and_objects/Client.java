@@ -96,7 +96,6 @@ public class Client {
         System.out.println("============================");
 
         System.out.println("***********************************************************");
-
         System.out.println("============================");
         String str1 = "Hello";
         String str2 = "Hello";
@@ -105,6 +104,14 @@ public class Client {
         System.out.println("str1 == str2: " + (str1 == str2)); // true, both refer to the same string literal in the string pool
         System.out.println("str1 == str3: " + (str1 == str3)); // false, str3 refers to a new string object in the heap memory
         System.out.println("str1.equals(str3): " + str1.equals(str3)); // true, both have the same content
+        System.out.println("============================");
+
+        System.out.println("***********************************************************");
+        System.out.println("============================");
+        // use parameterized constructor to create a new object of the Driver class
+        Driver driver4 = new Driver(102, "Alice Smith", 4.9, true);
+        System.out.println("Driver4 name: " + driver4.name);
+        System.out.println("DEBUG");
         System.out.println("============================");
 
         System.out.println("***********************************************************");
