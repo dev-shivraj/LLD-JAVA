@@ -4,6 +4,20 @@ public class Pair<T, V> {
     T x;
     V y;
 
+    //  ====================    static variations of generics       ==========================
+    public static <T> void print(T value) {
+        System.out.println(value);
+    }
+
+    public static <T> T getValue(T value) {
+        return value;
+    }
+
+    public static <T> T getAnotherValue() {
+        return null;
+    }
+
+    //  ======================================================================================
     public Pair() {}
 
     public Pair(T x, V y) {

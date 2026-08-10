@@ -24,5 +24,43 @@ public class Client {
 
         System.out.println(x);
         System.out.println(y);
+        System.out.println("********************************");
+
+
+        // =========    use static method of generic class   ==========================
+        System.out.println("********************************");
+        Pair.print("Hello");
+        Pair.print(100);
+        Pair.print(10.5);
+        Pair.print(true);
+        System.out.println("=======");
+        // we can also use the static method of generic class with explicit type parameter
+        Pair.<String>print("Hello");
+        Pair.<Integer>print(100);
+        Pair.<Double>print(10.5);
+        System.out.println("********************************");
+
+
+        System.out.println("********************************");
+
+        String s = Pair.getValue("Hello");
+        Integer i = Pair.getValue(100);
+        Double d = Pair.getValue(10.5);
+
+        System.out.println(s);
+        System.out.println(i);
+        System.out.println(d);
+
+        System.out.println("********************************");
+
+
+        System.out.println("********************************");
+
+        String s1 = Pair.<String>getAnotherValue();
+        Integer i1 = Pair.<Integer>getAnotherValue();
+        Double d1 = Pair.<Double>getAnotherValue();
+
+        System.out.println("********************************");
+        // =========    use static method of generic class   ==========================
     }
 }
