@@ -1,6 +1,6 @@
 package generics.generics_in_inheritance;
 
-public class Animal {
+public class Animal extends Creature {
     String name;
 
     public Animal(String name) {

@@ -1,5 +1,6 @@
 package generics.generics_in_inheritance;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
@@ -19,6 +20,19 @@ public class Client {
             System.out.println(animal.getName());
         }
     }
+
+    // wildcard generics
+    static void addANimal(List<? super Creature> animals) {
+        animals.add(new Dog("Dog3"));
+        animals.add(new Animal("Animal1"));
+    }
+
+    // wildcard generics : both upper and lower bound
+    // it is loosly coupled and not type safe, so it is not recommended to use it
+    static void xxx(List<?> x) {
+
+    }
+
 
     static void main() {
         System.out.println("================================================================");
@@ -54,5 +68,18 @@ public class Client {
          printAnimalNames2(listDogs2);
         System.out.println("================================================================");
 
+
+        System.out.println("================================================================");
+
+        List<Creature> listCreatures = new ArrayList<>();
+        // This line will not cause a compilation error now
+        // because List<Creature> is a subtype of List<? super Animal>
+        addANimal(listCreatures);
+
+        // This line will not cause a compilation error now
+        // because List<Dog> is a subtype of List<? super Creature>
+        // it is not supertype of List<Animal> but it is supertype of List<Creature>
+        // addANimal(listDogs2);
+        System.out.println("================================================================");
     }
 }
