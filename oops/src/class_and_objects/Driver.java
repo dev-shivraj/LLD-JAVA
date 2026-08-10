@@ -12,6 +12,14 @@ public class Driver {
 
 
     // constructor of the Driver class :
+
+    // default constructor : it is a constructor with no parameters. it is used to initialize the object with default values.
+    // a class can have multiple constructors with different parameters. this is known as constructor overloading. it allows us to create objects of the class in different ways.
+    // constructor name is same as the class name and it does not have a return type. it is used to initialize the object of the class.
+    // constructor doesn't have a return type because it is not a method. it is a special function which is used to initialize the object of the class. it is called when we create an object of the class using the new keyword.
+    // void is also a return type but it is not used for constructors because constructors are not methods. they are special functions which are used to initialize the object of the class. they are called when we create an object of the class using the new keyword.
+    // either we or java will provide the default constructor but not both. if we define a parameterized constructor, we need to explicitly define the default constructor if we want to use it as well.
+    // if we don't define the default constructor, Java will not provide it for us if we have defined a parameterized constructor and it will result in a compilation error if we try to create an object of the Driver class using the default constructor.
     public Driver() {
         // default constructor : even if we don't define it, Java provides a default constructor
         // java write it likes below ;
@@ -29,6 +37,12 @@ public class Driver {
             rating = 5.0;
             isOnline = false;
          */
+    }
+
+    // parameterized constructor : it is a constructor with parameters.
+    // it is used to initialize the object with specific values.
+    public Driver(String n) {
+        name = n;
     }
 
     // we can also define a parameterized constructor to initialize the attributes with specific values when creating an object of the Driver class
