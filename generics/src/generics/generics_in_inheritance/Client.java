@@ -9,7 +9,14 @@ public class Client {
 
     static void printAnimalNames(List<Animal> animals) {
         for (Animal animal : animals) {
-                System.out.println(animal.getName());
+            System.out.println(animal.getName());
+        }
+    }
+
+    // wildcard generics
+    static void printAnimalNames2(List<? extends Animal> animals) {
+        for (Animal animal : animals) {
+            System.out.println(animal.getName());
         }
     }
 
@@ -37,6 +44,14 @@ public class Client {
         // because List<Dog> is not a subtype of List<Animal>
         // actually Dog is a subtype of Animal, but List<Dog> is not a subtype of List<Animal>
         // printAnimalNames(dogs);
+        System.out.println("================================================================");
+
+
+        System.out.println("================================================================");
+        List<Dog> listDogs2 = List.of(new Dog("Dog1"), new Dog("Dog2"));
+        // This line will not cause a compilation error now
+        // because List<Dog> is a subtype of List<? extends Animal>
+         printAnimalNames2(listDogs2);
         System.out.println("================================================================");
 
     }
