@@ -1,6 +1,6 @@
 package comparable;
 
-public class Item {
+public class Item implements Comparable<Item> {
     private String id;
     private String name;
     private int quantity;
@@ -43,5 +43,38 @@ public class Item {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    /*
+     * here we are comparing two objects, but we are having only one as parameter, why ?
+     * because the object on which compareTo is called is implicitly passed as "this"
+     * so it is comparing "this" object with the "other" object passed as parameter,
+     * and we are returning an integer value, which is the result of comparison
+     *
+     * if the result is negative, it means "this" object is less than "other" object
+     * if the result is positive, it means "this" object is greater than "other" object
+     * if the result is zero, it means "this" object is equal to "other" object
+     *
+     *
+     * so we can use this result to sort the list of items in ascending order
+     * we can also use this result to sort the list of items in descending order by reversing the comparison
+     * we can also use this result to sort the list of items based on any attribute of the Item class, like name, quantity, price, etc.
+     * we can also use this result to sort the list of items based on multiple attributes of the Item class, like name and price, by comparing them in sequence
+     *
+     *
+     * if we want this to come first, return -ve value
+     * if we want other to come first, return +ve value
+     * if both are same then return 0
+     */
+    @Override
+    public int compareTo(Item other) {
+        // sort by price in ascending order
+        if (this.price < other.price) {
+            return -1;
+        } else if (this.price > other.price) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
