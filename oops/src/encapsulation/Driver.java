@@ -30,6 +30,20 @@ public class Driver {
         return rating;
     }
 
+    /*
+        this is to think that even if we keep member as private and keeping the getter setters, we can still access the data in client code
+        only thing is that we have validations now
+        but what if there is no validations
+        this can still be directly accessible and anyone can access it through the client code
+
+        the answer to this is that yes, any client can change it if we want
+        but if we want it completely private and don't want any client to access it, we can not expose the setter method
+        so this way we can completely protect our data/
+        depending on our use case we can control it
+
+        so,
+        encapsulation provide us complete control of the data along with the validation that we can apply on the data
+     */
     public void setRating(double rating) {
         // this.rating = rating;
 
