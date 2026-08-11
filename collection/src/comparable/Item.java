@@ -66,15 +66,47 @@ public class Item implements Comparable<Item> {
      * if we want other to come first, return +ve value
      * if both are same then return 0
      */
+
+    /*
+     * if we want to sort in ascending order:
+     *   we need to return -ve value : if "this" object is less than "other" object
+     *   +ve value : if "this" object is greater than "other" object,
+     *   and 0 if both are equal
+     *
+     *
+     * if we want to sort in descending order:
+     *   we need to return +ve value : if "this" object is less than "other" object
+     *   -ve value : if "this" object is greater than "other" object
+     *   and 0 : if both are equal
+     *
+     */
     @Override
     public int compareTo(Item other) {
-        // sort by price in ascending order
-        if (this.price < other.price) {
-            return -1;
-        } else if (this.price > other.price) {
-            return 1;
-        } else {
-            return 0;
-        }
+        /*
+         * we can compare the items based on their price, quantity, name, etc.
+         * here we are comparing the items based on their price
+         * if we want to compare based on quantity, we can use this.quantity - other.quantity
+         * if we want to compare based on name, we can use this.name.compareTo(other.name)
+         *
+         */
+
+        /*
+            // sort by price in ascending order
+            if (this.price < other.price) {
+                return -1;
+            } else if (this.price > other.price) {
+                return 1;
+            } else {
+                return 0;
+            }
+         */
+
+        /*
+            // above can be simplified to :
+            return (int) (this.price - other.price);
+         */
+
+        // further simplified to :
+        return Double.compare(this.price, other.price);
     }
 }
