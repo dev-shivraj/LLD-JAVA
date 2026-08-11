@@ -27,6 +27,20 @@ public class Driver {
     }
 
     public void setRating(double rating) {
-        this.rating = rating;
+        // this.rating = rating;
+
+        /*
+            by just exposing the setter and making the data members private we can not control the access to the data members
+            client can still modify the data members directly by calling the setter method.
+
+            so we can add validation or any other logic in the setter method to control the access to the data members.
+            for example, we can add validation to check if the rating is between 0 and 5.
+         */
+
+        if(rating < 0 || rating > 5) {
+            throw new IllegalArgumentException("Rating should be between 0 and 5");
+        } else {
+            this.rating = rating;
+        }
     }
 }
