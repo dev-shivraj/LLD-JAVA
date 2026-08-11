@@ -8,6 +8,7 @@ Client {
         Driver driver3 = new Driver(103, "Mike Johnson", 4.9, true);
         Driver driver4 = new Driver(104, "Emily Davis", 4.7, false);
 
+        System.out.println("Total Drivers: " + driver2.totalDrivers);
         System.out.println("DEBUG");
 
     }
