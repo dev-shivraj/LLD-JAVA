@@ -3,7 +3,7 @@ package encapsulation;
 public class Driver {
 
     /*
-        because of any client can modifiy the data members directly
+        because of any client can modify the data members directly
         we make the data members private so that they cannot be accessed directly from outside the class.
         so we make the data members private and provide public getter and setter methods to access and modify the data members.
         This way we can control the access to the data members and can add validation or any other logic in the getter and setter methods.
@@ -24,6 +24,10 @@ public class Driver {
         this.name = name;
         this.rating = rating;
         this.isOnline = isOnline;
+    }
+
+    public double getRating() {
+        return rating;
     }
 
     public void setRating(double rating) {
