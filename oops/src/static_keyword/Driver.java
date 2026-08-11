@@ -27,6 +27,7 @@ public class Driver {
     // it is used to initialize static variables or perform any other static initialization
     // it is executed before the constructor and before any instance of the class is created
     // it is executed only once when the class is loaded into memory
+    // we can use only static variables and static methods in a static block
     // we can not access instance variables or instance methods in a static block as they do not belong to any specific instance and they are not yet created when the static block is executed
     // it is recommended to use static block for static initialization only
     // we can have multiple static blocks in a class and they will be executed in the order they are defined in the class

@@ -37,5 +37,20 @@ Client {
 
         System.out.println("DEBUG");
 
+        /*
+            static block is executed only once when the class is loaded into memory
+            it will not be executed if we don't use the class in our code
+            it will not be executed again when we create an object of the class
+         */
+
+        // we can use Loaded class by creating an object of it or by accessing its static variable or static method
+        //Loaded loaded = new Loaded();
+        System.out.println(Loaded.loadedCount);
+
+
+        // without using this NotLoaded class in our code, the static block of NotLoaded class will not be executed
+        // NotLoaded notLoaded = new NotLoaded();
+
+
     }
 }
