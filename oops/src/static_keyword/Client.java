@@ -19,6 +19,22 @@ Client {
         // this is the recommended way to access static variables
         System.out.println("Total Drivers: " + Driver.totalDrivers);
 
+
+        // call static method to display total drivers
+        Driver.displayTotalDrivers();
+
+
+        /*
+            // we can call the static method using the class name or using an instance(object) of the class
+            // but it is recommended to use the class name to call static methods
+            // this is not recommended as it can be confusing
+            driver3.displayTotalDrivers();
+
+            // this is the recommended way to call static methods
+            Driver.displayTotalDrivers();
+         */
+
+
         System.out.println("DEBUG");
 
     }
