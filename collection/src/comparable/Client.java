@@ -27,7 +27,8 @@ public class Client {
         Collections.sort(items);
 
         for (Item item : items) {
-            System.out.println(item.getId() + " " + item.getName() + " " + item.getQuantity() + " " + item.getPrice());
+            // print items based on toString method of Item class
+            System.out.println(item);
         }
 
     }

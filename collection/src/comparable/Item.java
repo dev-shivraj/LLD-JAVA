@@ -119,4 +119,9 @@ public class Item implements Comparable<Item> {
             return Integer.compare(this.quantity, other.quantity);
         }
     }
+
+    @Override
+    public String toString() {
+        return "Item [id=" + id + ", name=" + name + ", quantity=" + quantity + ", price=" + price + "]";
+    }
 }
