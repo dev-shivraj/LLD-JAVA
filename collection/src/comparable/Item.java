@@ -106,7 +106,17 @@ public class Item implements Comparable<Item> {
             return (int) (this.price - other.price);
          */
 
+        /*
         // further simplified to :
         return Double.compare(this.price, other.price);
+         */
+
+        // sort based on price and if price is same then sort based on quantity
+        int priceComparison = Double.compare(this.price, other.price);
+        if (priceComparison != 0) {
+            return priceComparison;
+        } else {
+            return Integer.compare(this.quantity, other.quantity);
+        }
     }
 }
