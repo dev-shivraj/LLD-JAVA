@@ -110,9 +110,15 @@ public class Client {
         // and it takes two parameters x and y, which are the two numbers to be compared,
         // and it returns the difference of their squares.
         // it's just an implementation of compare method of Comparator interface, which is a functional interface with a single abstract method compare.
-        Collections.sort(numbers, (x, y) -> {
-            return x * x - y * y;
-        });
+        /*
+            Collections.sort(numbers, (x, y) -> {
+                return x * x - y * y;
+            });
+         */
+
+        // we can remove the curly braces and return statement if the body of the lambda expression has only one statement, so it would be like this :
+        Collections.sort(numbers, (x, y) -> x * x - y * y);
+
 
         System.out.println(numbers);
     }
