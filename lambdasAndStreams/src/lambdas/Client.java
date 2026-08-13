@@ -17,6 +17,11 @@ package lambdas;
             Predicate: having only one abstract method test()
      */
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 /*
     Lambda : A single line way of defining the method of a functional interface.
         It is a block of code that can be passed around and executed later.
@@ -53,6 +58,7 @@ public class Client {
                 here function doesn't accept any parameter of run method, so we don't have to pass any parameter to it.
              */
             System.out.println("Task is running");
+            // here we are not returning anything because run method doesn't return anything, so we don't have to return anything from it.
         };
 
         Thread thread = new Thread(task);
@@ -74,8 +80,40 @@ public class Client {
             1. when we have a simple onetime case throwaway implementation of a functional interface with a single abstract method, we can use lambda expression to implement it.
             2. when we have to pass a block of code as an argument to a method
             3. when we have to create an anonymous class with a single abstract method.
-         }
+         */
 
 
+        /*
+            lambda function to return anything from it,
+            we can use the functional interface with a single abstract method which returns something,
+            and we can use lambda expression to implement it.
+         */
+
+        List<Integer> numbers = Arrays.asList(2, 4, -3, -5, 1);
+        // we want to sort this list based on square of the numbers in it
+        // result : [1, 2, -3, 4, -5]
+
+        // we can write it without lambda expression also :
+        /*
+            Collections.sort(numbers, new Comparator<Integer>() {
+                @Override
+                public int compare(Integer o1, Integer o2) {
+                    return Integer.compare(o1 * o1, o2 * o2);
+                }
+            });
+            System.out.println(numbers);
+         */
+
+
+        // but it would be easier to write it using lambda expression
+        // here it takes lambda expression : bracket represents the compare method of Comparator interface,
+        // and it takes two parameters x and y, which are the two numbers to be compared,
+        // and it returns the difference of their squares.
+        // it's just an implementation of compare method of Comparator interface, which is a functional interface with a single abstract method compare.
+        Collections.sort(numbers, (x, y) -> {
+            return x * x - y * y;
+        });
+
+        System.out.println(numbers);
     }
 }
