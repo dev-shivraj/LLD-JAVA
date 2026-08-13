@@ -26,6 +26,8 @@ package lambdas;
  */
 public class Client {
     public static void main(String[] args) {
-
+        Task task = new Task();
+        Thread thread = new Thread(task);
+        thread.start();
     }
 }
