@@ -1,4 +1,4 @@
-package lambdas;
+package lambdas.createOwnFunctionalInterface;
 
 /*
     Functional Interface : interface with only one abstract method.
