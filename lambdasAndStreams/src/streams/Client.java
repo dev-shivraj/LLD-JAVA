@@ -13,6 +13,19 @@ import java.util.stream.Stream;
     2. Convert the collection into a stream using the stream() method.
     3. Do the data manipulation operations on the stream using the various methods provided by the Stream API.
     4. Convert the stream back into a collection using the methods provided by the Stream API : collect(), toArray(), forEach(), etc.
+
+
+    Type of Stream Operations :
+        1. Intermediate Operations : These operations are used to do the data manipulation operations on the stream and return a new stream.
+                                     These operations are lazy in nature and are not executed until a terminal operation is invoked on the stream.
+                                     Examples : filter(), map(), sorted(), distinct(), limit(), skip(), flatMap(), peek(), etc.
+
+        2. Terminal Operations : These operations are used to convert the stream back into a collection or to perform some final operation on the stream.
+                                 It closes the stream and returns a non-stream value.
+                                 Once a terminal operation is invoked on the stream, the stream can not be used again.
+                                 These operations are eager in nature and are executed immediately.
+                                 Examples : collect(), findAny(), findFirst(), toArray(), forEach(), reduce(), count(), etc.
+
  */
 public class Client {
     public static void main(String[] args) {
@@ -24,7 +37,7 @@ public class Client {
         // step 2 : covert to stream
         Stream<Integer> stream = arr.stream();
 
-        // step 3: do the data manupulation
+        // step 3: do the data manipulation
         stream = stream.filter(x -> x % 2 == 0);
 
         // step 4: convert back to collection
@@ -51,5 +64,11 @@ public class Client {
                 List<Integer> oddNumbers = arr.stream().filter(x -> x % 2 != 0).collect(Collectors.toList());
                 System.out.println(oddNumbers);
          */
+
+        // instead of collecting the stream, we can directly print it
+        arr.stream()
+                .filter(x -> x % 2 == 0)
+                .sorted(). // sort the even numbers in ascending order
+                forEach(x -> System.out.print(x + " "));
     }
 }
