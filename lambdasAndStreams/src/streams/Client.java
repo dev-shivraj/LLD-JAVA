@@ -70,5 +70,12 @@ public class Client {
                 .filter(x -> x % 2 == 0)
                 .sorted(). // sort the even numbers in ascending order
                 forEach(x -> System.out.print(x + " "));
+
+        // we can also use comparator to sort the even numbers in descending order
+        System.out.println();
+        arr.stream()
+                .filter(x -> x % 2 == 0)
+                .sorted((a, b) -> b - a) // sort the even numbers in descending order
+                .forEach(x -> System.out.print(x + " "));
     }
 }
