@@ -38,5 +38,18 @@ public class Client {
         // one-liner :
         List<Integer> evenNumbers2 = arr.stream().filter(x -> x % 2 == 0).collect(Collectors.toList());
         System.out.println(evenNumbers2);
+
+        /*
+            once we collect the stream, we can not operate back on that stream. we have to create a new stream from the collection again.
+            for example inn above example, if we want to find the odd numbers in the same list, we have to create a new stream from the collection again.
+            below will not work and will throw an exception:
+                List<Integer> oddNumbers = stream.filter(x -> x % 2 != 0).collect(Collectors.toList());
+                System.out.println(oddNumbers);
+
+
+            we can create a new stream from the collection again to find the odd numbers:
+                List<Integer> oddNumbers = arr.stream().filter(x -> x % 2 != 0).collect(Collectors.toList());
+                System.out.println(oddNumbers);
+         */
     }
 }
