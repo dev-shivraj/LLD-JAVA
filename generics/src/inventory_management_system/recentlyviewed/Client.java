@@ -1,6 +1,9 @@
-package inventoryManagementSystem;
+package inventory_management_system.recentlyviewed;
 
-public class ClientRecentlyViewed {
+import inventory_management_system.items.Clothing;
+import inventory_management_system.items.Item;
+
+public class Client {
     public static void main(String[] args) {
         RecentlyViewedItems items = new RecentlyViewedItems();
         Item item1 = new Item("1", "Apple", 10.5, 5);

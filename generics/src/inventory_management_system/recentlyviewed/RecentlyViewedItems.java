@@ -1,4 +1,6 @@
-package inventoryManagementSystem;
+package inventory_management_system.recentlyviewed;
+
+import inventory_management_system.items.Item;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
