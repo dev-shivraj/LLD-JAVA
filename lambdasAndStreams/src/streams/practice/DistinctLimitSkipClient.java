@@ -1,12 +1,8 @@
 package streams.practice;
 
-import lambdas.practice.entity.Employee;
-
-import javax.print.Doc;
-import java.util.Comparator;
 import java.util.List;
 
-public class Client {
+public class DistinctLimitSkipClient {
     public static void main(String[] args) {
 
         // ================================================================
@@ -197,6 +193,147 @@ public class Client {
 //                .forEach(System.out::println);
 //
 //        System.out.println("------------------");
+
+        // ================================================================
+        // limit()
+
+//        List<Integer> numbers = List.of(10, 20, 30, 40, 50);
+//        numbers.stream()
+//                .limit(3)
+//                .forEach(System.out::println);
+//
+//        System.out.println("----------------");
+//
+//
+//
+//        numbers.stream()
+//                .skip(3)
+//                .forEach(System.out::println);
+//
+//        System.out.println("----------------");
+//
+//
+//        numbers.stream()
+//                .skip(2)
+//                .limit(2)
+//                .forEach(System.out::println); // 30, 40
+//
+//        System.out.println("------------------");
+//
+//
+//        // order matters if we combine skip and limit
+//        numbers.stream()
+//                .limit(2)
+//                .skip(2)
+//                .forEach(System.out::println); // gives nothing
+//
+//        System.out.println("------------------");
+
+        // ================================================================
+        // filter() + limit()
+//        List<Integer> numbers = List.of(10, 15, 20, 25, 30, 35, 40, 45, 50);
+//
+//        // get first 3 even numbers
+//        numbers.stream()
+//                .filter(x -> x % 2 == 0)
+//                .limit(3)
+//                .forEach(System.out::println);
+//
+//        System.out.println("----------------");
+//
+//
+//
+//        // if we reverse filter and limit order
+//        numbers.stream()
+//                .limit(3)
+//                .filter(x -> x % 2 == 0)
+//                .forEach(System.out::println);
+//
+//        System.out.println("------------------");
+
+        // ================================================================
+        // distinct() + limit()
+
+//        List<Integer> numbers = List.of(10, 20, 10, 30, 20, 40, 50);
+//
+//
+//        // get first 3 unique numbers
+//        numbers.stream()
+//                .distinct()
+//                .limit(3)
+//                .forEach(System.out::println);
+//
+//        System.out.println("-----------------");
+
+
+        // ================================================================
+        // sorted() + limit()
+
+//        List<Employee> employees = List.of(
+//                new Employee("Shivraj", 22, 150_000, "IT"),
+//                new Employee("Raj", 25, 50_000, "SELLS"),
+//                new Employee("Arya", 22, 10_000, "HR"),
+//                new Employee("Rohan", 22, 500_000, "IT"),
+//                new Employee("Divya", 22, 200_000, "IT"),
+//                new Employee("Ruhi", 22, 75_000, "MARKETING"),
+//                new Employee("Rahul", 22, 125_000, "IT"),
+//                new Employee("Rohit", 22, 125_000, "HR"),
+//                new Employee("Karan", 22, 125_000, "IT"),
+//                new Employee("Nayan", 22, 125_000, "MARKETING"),
+//                new Employee("Roshni", 22, 125_000, "IT"),
+//                new Employee("Pankaj", 22, 125_000, "IT"),
+//                new Employee("Salman", 22, 125_000, "MARKETING"),
+//                new Employee("Raghav", 22, 125_000, "IT"),
+//                new Employee("Dimple", 22, 125_000, "HR"),
+//                new Employee("Karina", 22, 125_000, "IT")
+//        );
+//
+//
+//        // find the 3 lowest salaries:
+//        employees.stream()
+//                .sorted((a, b) -> Double.compare(a.getSalary(), b.getSalary()))
+//                .limit(3)
+//                .forEach(System.out::println);
+//
+//        System.out.println("-------------------");
+//
+//
+//
+//        // find the 3 highest salaries
+//        employees.stream()
+//                .sorted((a, b) -> Double.compare(b.getSalary(), a.getSalary()))
+//                .limit(3)
+//                .forEach(System.out::println);
+//
+//        System.out.println("------------------");
+//
+//
+//        // get the name of top 3 highest paid employee working in IT having salary greater than 50K
+//        employees.stream()
+//                .filter(employee -> "IT".equals(employee.getDepartment()))
+//                .filter(employee -> employee.getSalary() > 50_000)
+//                .sorted((a, b) -> Double.compare(b.getSalary(), a.getSalary()))
+//                .limit(3)
+//                .map(employee -> employee.getName())
+//                .forEach(System.out::println);
+//
+//        System.out.println("-----------------");
+
+        // ================================================================
+        // peek
+
+        List<Integer> numbers = List.of(10, 20, 30, 15, 25);
+        numbers.stream()
+                .filter(x -> x % 2 == 0)
+                .peek(x -> System.out.println("After filter: " + x))
+                .map(x -> x * 2)
+                .peek(x -> System.out.println("After map: " + x))
+                .forEach(System.out::println);
+
+        System.out.println("-------------------------");
+
+        // ================================================================
+
 
         // ================================================================
     }
