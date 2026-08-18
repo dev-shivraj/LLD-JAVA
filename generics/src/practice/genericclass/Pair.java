@@ -19,4 +19,8 @@ public class Pair<K, V> {
     public V getValue() {
         return this.value;
     }
+
+    static <T> void initialize(T value) {
+        System.out.println("Class pair is initialized with value : " + value);
+    }
 }

@@ -29,5 +29,14 @@ public class Client {
 
 
         // ============================================================
+        // static method call
+
+        System.out.println("-----------------------");
+        Pair.initialize("Shivraj");
+        Pair.<Integer>initialize(10);
+        Pair.<Double>initialize(100.50);
+        Pair.<Boolean>initialize(false);
+
+        // ============================================================
     }
 }
