@@ -1,4 +1,4 @@
-package practice.genericinterface.part1;
+package practice.genericinterface_03.part1;
 
 public class IntegerStorage implements Storage<Integer> {
     private Integer value;

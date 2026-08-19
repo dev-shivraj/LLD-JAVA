@@ -1,4 +1,4 @@
-package practice.genericinterface.part2;
+package practice.genericinterface_03.part2;
 
 public class Client {
     public static void main(String[] args) {

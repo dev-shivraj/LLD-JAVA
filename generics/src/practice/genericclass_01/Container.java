@@ -1,4 +1,4 @@
-package practice.genericclass;
+package practice.genericclass_01;
 
 public class Container<T> {
     private T value;

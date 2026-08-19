@@ -1,4 +1,4 @@
-package practice.genericinterface.part2;
+package practice.genericinterface_03.part2;
 
 public class GenericStorage<T> implements Storage<T>{
     private T value;

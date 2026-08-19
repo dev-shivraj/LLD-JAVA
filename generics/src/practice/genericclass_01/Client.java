@@ -1,4 +1,4 @@
-package practice.genericclass;
+package practice.genericclass_01;
 
 public class Client {
     public static void main(String[] args) {

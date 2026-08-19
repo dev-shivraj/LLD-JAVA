@@ -1,4 +1,4 @@
-package practice.genericmethod;
+package practice.genericmethod_02;
 
 public class Box<T> {
     private T value;
