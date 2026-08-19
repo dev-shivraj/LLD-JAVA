@@ -1,10 +1,5 @@
 package inventory_management_system.orders;
 
-/*
-Add multiple express and regular orders.
-Test if express orders are processed first.
-
- */
 public class Client {
     public static void main(String[] args) {
         OrderProcessor orderProcessor = new OrderProcessor();
