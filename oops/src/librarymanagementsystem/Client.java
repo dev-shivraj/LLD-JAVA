@@ -1,17 +1,30 @@
 package librarymanagementsystem;
 
 public class Client {
-    static void main() {
-        User user1 = new Member("Raj", "43423");
-        User user2 = new Librarian("Shivraj", "234230423", "101");
-//        User user3 = new Member(user2);
 
-        user1.displayDashboard();
-        user2.displayDashboard();
+    public static void main(String[] args) {
+        // ======================================================================================================================
+//        Member goku     = new Member("Goku", "goku@email.com");
+//        Librarian vegeta  = new Librarian("Vegeta", "vegeta@email.com", "EMP-007");
+//
+//        goku.displayDashboard();
+//        vegeta.displayDashboard();
+//
+//        System.out.println("Member ID:    " + goku.getUserId());
+//        System.out.println("Librarian ID: " + vegeta.getUserId());
+//        System.out.println("Total users:  " + User.getTotalUsers());
 
-        System.out.println("Member Id : " + user1.getUserId());
-        System.out.println("Librarian Id : " + user2.getUserId());
-        System.out.println("Total Users: " + User.getTotalUser());
+        // ======================================================================================================================
+        Member goku = new Member("Asha", "asha@email.com");
+        Book novel  = new NovelBook("N-1", "Dune", "Frank Herbert", "Sci-Fi");
 
+        novel.displayBookDetails();
+
+        System.out.println("Available? " + novel.isAvailable());    // true
+        System.out.println("Lend:      " + novel.lend(goku));       // true
+        System.out.println("Available? " + novel.isAvailable());    // false
+        System.out.println("Lend again:" + novel.lend(goku));       // false
+
+        // ======================================================================================================================
     }
 }
