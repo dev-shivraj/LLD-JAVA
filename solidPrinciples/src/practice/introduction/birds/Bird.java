@@ -1,4 +1,4 @@
-package practice.introduction.part1.birds.badDesign;
+package practice.introduction.birds;
 
 public class Bird {
     // Bird behavior
