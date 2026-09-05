@@ -4,7 +4,7 @@ import practice.adaptor.part1.payment.PaymentProcessor;
 import practice.adaptor.part1.payment.external.StripeGateway;
 
 public class StripeAdaptor implements PaymentProcessor {
-    StripeGateway stripeGateway;
+    private final StripeGateway stripeGateway;
 
     public StripeAdaptor(StripeGateway stripeGateway) {
         this.stripeGateway = stripeGateway;

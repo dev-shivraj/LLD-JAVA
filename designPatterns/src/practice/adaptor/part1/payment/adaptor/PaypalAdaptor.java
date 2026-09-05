@@ -4,7 +4,7 @@ import practice.adaptor.part1.payment.PaymentProcessor;
 import practice.adaptor.part1.payment.external.PayPalGateway;
 
 public class PaypalAdaptor implements PaymentProcessor {
-    PayPalGateway payPalGateway;
+    private final PayPalGateway payPalGateway;
 
     public PaypalAdaptor(PayPalGateway payPalGateway) {
         this.payPalGateway = payPalGateway;
