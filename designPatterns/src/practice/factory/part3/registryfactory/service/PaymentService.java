@@ -1,5 +1,6 @@
 package practice.factory.part3.registryfactory.service;
 
+import practice.factory.part3.registryfactory.PaymentType;
 import practice.factory.part3.registryfactory.component.Payment;
 import practice.factory.part3.registryfactory.factory.PaymentFactory;
 
@@ -10,7 +11,7 @@ public class PaymentService {
         this.factory = factory;
     }
 
-    public void process(String type, double amount) {
+    public void process(PaymentType type, double amount) {
         Payment payment = factory.create(type);
         payment.pay(amount);
     }

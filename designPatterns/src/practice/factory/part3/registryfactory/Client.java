@@ -9,11 +9,11 @@ import practice.factory.part3.registryfactory.factory.PaymentFactory;
 public class Client {
     public static void main(String[] args) {
         PaymentFactory factory = new PaymentFactory();
-        factory.register("UPI", UpiPayment::new);
-        factory.register("CARD", CreditCardPayment::new);
-        factory.register("PAYPAL", PayPalPayment::new);
+        factory.register(PaymentType.UPI, UpiPayment::new);
+        factory.register(PaymentType.CARD, CreditCardPayment::new);
+        factory.register(PaymentType.PAYPAL, PayPalPayment::new);
 
-        Payment payment = factory.create("UPI");
+        Payment payment = factory.create(PaymentType.UPI);
         payment.pay(1000);
     }
 }
