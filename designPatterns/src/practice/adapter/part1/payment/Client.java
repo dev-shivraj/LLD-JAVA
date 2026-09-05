@@ -1,10 +1,10 @@
-package practice.adaptor.part1.payment;
+package practice.adapter.part1.payment;
 
-import practice.adaptor.part1.payment.adaptor.RazorpayAdaptor;
-import practice.adaptor.part1.payment.adaptor.StripeAdaptor;
-import practice.adaptor.part1.payment.external.RazorpayGateway;
-import practice.adaptor.part1.payment.external.StripeGateway;
-import practice.adaptor.part1.payment.service.PaymentService;
+import practice.adapter.part1.payment.adapter.RazorpayAdapter;
+import practice.adapter.part1.payment.adapter.StripeAdapter;
+import practice.adapter.part1.payment.external.RazorpayGateway;
+import practice.adapter.part1.payment.external.StripeGateway;
+import practice.adapter.part1.payment.service.CheckoutService;
 
 public class Client {
     public static void main(String[] args) {
@@ -13,25 +13,25 @@ public class Client {
 //        PaymentProcessor adaptor = new RazorpayAdaptor(razorpayGateway);
 //
 //        PaymentService service = new PaymentService(adaptor);
-//        service.processPayment(1000);
+//        service.checkout(1000);
 
         // ================================================================================
 
         // =========  some more external service integrated through the adaptor ===========
 
         StripeGateway gateway = new StripeGateway();
-        PaymentProcessor adaptor = new StripeAdaptor(gateway);
+        PaymentProcessor adaptor = new StripeAdapter(gateway);
 
-        PaymentService paymentService = new PaymentService(adaptor);
-        paymentService.processPayment(3000);
+        CheckoutService checkoutService = new CheckoutService(adaptor);
+        checkoutService.checkout(3000);
 
 
 
         System.out.println("---------------------------------");
         RazorpayGateway razorpayGateway = new RazorpayGateway();
-        adaptor = new RazorpayAdaptor(razorpayGateway);
-        paymentService = new PaymentService(adaptor);
-        paymentService.processPayment(5000);
+        adaptor = new RazorpayAdapter(razorpayGateway);
+        checkoutService = new CheckoutService(adaptor);
+        checkoutService.checkout(5000);
         // ================================================================================
     }
 }

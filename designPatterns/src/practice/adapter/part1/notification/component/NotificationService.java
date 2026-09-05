@@ -1,4 +1,4 @@
-package practice.adaptor.part2.notification.objectadaptor.component;
+package practice.adapter.part1.notification.component;
 
 public interface NotificationService {
     void send(String recipient, String message);
