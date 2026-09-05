@@ -1,7 +1,7 @@
-package practice.factory.part3.registryfactory.factory;
+package practice.factory.part3.registryfactory.payment.factory;
 
-import practice.factory.part3.registryfactory.PaymentType;
-import practice.factory.part3.registryfactory.component.Payment;
+import practice.factory.part3.registryfactory.payment.enums.PaymentType;
+import practice.factory.part3.registryfactory.payment.component.Payment;
 
 import java.util.HashMap;
 import java.util.Map;

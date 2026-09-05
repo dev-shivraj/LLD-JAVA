@@ -1,4 +1,4 @@
-package practice.factory.part3.registryfactory.component;
+package practice.factory.part3.registryfactory.payment.component;
 
 public class CreditCardPayment implements Payment{
     @Override

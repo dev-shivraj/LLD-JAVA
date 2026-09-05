@@ -1,8 +1,8 @@
-package practice.factory.part3.registryfactory.service;
+package practice.factory.part3.registryfactory.payment.service;
 
-import practice.factory.part3.registryfactory.PaymentType;
-import practice.factory.part3.registryfactory.component.Payment;
-import practice.factory.part3.registryfactory.factory.PaymentFactory;
+import practice.factory.part3.registryfactory.payment.enums.PaymentType;
+import practice.factory.part3.registryfactory.payment.component.Payment;
+import practice.factory.part3.registryfactory.payment.factory.PaymentFactory;
 
 public class PaymentService {
     private final PaymentFactory factory;
