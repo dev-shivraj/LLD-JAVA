@@ -53,9 +53,8 @@ The **Adapter Design Pattern** is a Structural Design Pattern that allows incomp
 45. [Adapter Pattern Summary](#45-adapter-pattern-summary)
 46. [Adapter Golden Rules](#46-adapter-golden-rules)
 47. [Adapter Checklist](#47-adapter-checklist)
-48. [Design Patterns Progress](#48-design-patterns-progress)
-49. [Final Takeaway](#49-final-takeaway)
-50. [One-Line Interview Definition](#50-one-line-interview-definition)
+48. [Final Takeaway](#48-final-takeaway)
+49. [One-Line Interview Definition](#49-one-line-interview-definition)
 
 ---
 
