@@ -4,6 +4,7 @@ public class DoubleCheckedSingleton {
     private static DoubleCheckedSingleton instance;
 
     private DoubleCheckedSingleton() {
+        System.out.println("DoubleCheckedSingleton created");
     }
 
     public static DoubleCheckedSingleton getInstance() {

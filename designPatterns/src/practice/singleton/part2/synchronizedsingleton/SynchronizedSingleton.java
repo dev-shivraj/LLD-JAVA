@@ -4,6 +4,7 @@ public class SynchronizedSingleton {
     private static SynchronizedSingleton instance;
 
     private SynchronizedSingleton() {
+        System.out.println("SynchronizedSingleton Created");
     }
 
     public static synchronized SynchronizedSingleton getInstance() {

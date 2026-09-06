@@ -11,8 +11,7 @@ public class Client {
         }
 
         SerializableSingleton singleton2;
-        try (ObjectInputStream input = new ObjectInputStream(
-                new FileInputStream("singleton.ser"))) {
+        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream("singleton.ser"))) {
             singleton2 = (SerializableSingleton) input.readObject();
         }
 
