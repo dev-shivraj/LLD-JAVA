@@ -1,4 +1,4 @@
-package practice.builder;
+package practice.builder.base;
 
 public class InstructorClient {
 
