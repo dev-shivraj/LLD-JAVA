@@ -1,0 +1,40 @@
+package practice.registry.part1.miniproject.factory;
+
+import practice.registry.part1.miniproject.processor.PaymentProcessor;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class PaymentRegistry {
+    private final Map<String, PaymentProcessor> processors = new HashMap<>();
+
+    public void register(String type, PaymentProcessor processor) {
+        if (type == null || type.isBlank()) {
+            throw new IllegalArgumentException("Payment type cannot be null or blank");
+        }
+
+        if (processor == null) {
+            throw new IllegalArgumentException("Payment processor cannot be null");
+        }
+
+        if (processors.containsKey(type)) {
+            throw new IllegalArgumentException("Payment processor already registered for type: " + type);
+        }
+
+        processors.put(type, processor);
+    }
+
+    public PaymentProcessor get(String type) {
+        if (type == null || type.isBlank()) {
+            throw new IllegalArgumentException("Payment type cannot be null or blank");
+        }
+
+        PaymentProcessor processor = processors.get(type);
+
+        if (processor == null) {
+            throw new IllegalArgumentException("No payment processor registered for type: " + type);
+        }
+
+        return processor;
+    }
+}
