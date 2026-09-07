@@ -1,0 +1,9 @@
+package practice.registry.part2.practice1.processor;
+
+public class PayPalPayment implements PaymentProcessor {
+
+    @Override
+    public void pay(double amount) {
+        System.out.println("Processing PAYPAL payment: " + amount);
+    }
+}
