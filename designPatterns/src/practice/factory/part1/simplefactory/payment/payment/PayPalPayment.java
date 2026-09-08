@@ -1,4 +1,4 @@
-package practice.factory.part1.simplefactory.payment;
+package practice.factory.part1.simplefactory.payment.payment;
 
 public class PayPalPayment implements Payment {
     @Override

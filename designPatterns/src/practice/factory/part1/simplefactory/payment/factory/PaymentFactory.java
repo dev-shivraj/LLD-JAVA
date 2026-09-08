@@ -1,9 +1,9 @@
-package practice.factory.part1.simplefactory.factory;
+package practice.factory.part1.simplefactory.payment.factory;
 
-import practice.factory.part1.simplefactory.payment.CreditCardPayment;
-import practice.factory.part1.simplefactory.payment.PayPalPayment;
-import practice.factory.part1.simplefactory.payment.Payment;
-import practice.factory.part1.simplefactory.payment.UpiPayment;
+import practice.factory.part1.simplefactory.payment.payment.CreditCardPayment;
+import practice.factory.part1.simplefactory.payment.payment.PayPalPayment;
+import practice.factory.part1.simplefactory.payment.payment.Payment;
+import practice.factory.part1.simplefactory.payment.payment.UpiPayment;
 
 public class PaymentFactory {
     public static Payment createPayment(String paymentType) {

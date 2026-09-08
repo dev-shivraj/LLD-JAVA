@@ -1,6 +1,6 @@
-package practice.factory.part1.simplefactory;
+package practice.factory.part1.simplefactory.payment;
 
-import practice.factory.part1.simplefactory.service.PaymentService;
+import practice.factory.part1.simplefactory.payment.service.PaymentService;
 
 public class Client {
     public static void main(String[] args) {
