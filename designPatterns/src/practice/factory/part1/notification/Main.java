@@ -1,5 +1,7 @@
 package practice.factory.part1.notification;
 
+import practice.factory.part1.notification.service.NotificationService;
+
 public class Main {
     public static void main(String[] args) {
         NotificationService service = new NotificationService();

@@ -1,0 +1,8 @@
+package practice.factory.part1.registryfactory.payment.component;
+
+public class CreditCardPayment implements Payment{
+    @Override
+    public void pay(double amount) {
+        System.out.println("Paid ₹" + amount + " using Credit Card");
+    }
+}

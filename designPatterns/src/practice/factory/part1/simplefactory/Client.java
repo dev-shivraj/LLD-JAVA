@@ -1,5 +1,7 @@
 package practice.factory.part1.simplefactory;
 
+import practice.factory.part1.simplefactory.service.PaymentService;
+
 public class Client {
     public static void main(String[] args) {
         PaymentService paymentService = new PaymentService();
