@@ -3,8 +3,8 @@ package practice.decorator.part1.practice1;
 import practice.decorator.part1.practice1.decorator.CheeseDecorator;
 import practice.decorator.part1.practice1.decorator.MushroomDecorator;
 import practice.decorator.part1.practice1.decorator.OliveDecorator;
-import practice.decorator.part1.practice1.service.Pizza;
-import practice.decorator.part1.practice1.service.PlainPizza;
+import practice.decorator.part1.practice1.component.Pizza;
+import practice.decorator.part1.practice1.component.PlainPizza;
 
 public class Client {
 

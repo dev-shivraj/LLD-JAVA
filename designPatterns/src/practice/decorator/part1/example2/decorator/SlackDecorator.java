@@ -1,6 +1,6 @@
 package practice.decorator.part1.example2.decorator;
 
-import practice.decorator.part1.example2.service.Notification;
+import practice.decorator.part1.example2.component.Notification;
 
 public class SlackDecorator extends NotificationDecorator {
 

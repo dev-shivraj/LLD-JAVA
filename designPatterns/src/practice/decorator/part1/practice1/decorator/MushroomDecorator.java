@@ -1,6 +1,6 @@
 package practice.decorator.part1.practice1.decorator;
 
-import practice.decorator.part1.practice1.service.Pizza;
+import practice.decorator.part1.practice1.component.Pizza;
 
 public class MushroomDecorator extends PizzaDecorator {
 

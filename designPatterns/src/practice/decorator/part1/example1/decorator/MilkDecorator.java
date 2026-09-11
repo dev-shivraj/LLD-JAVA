@@ -1,6 +1,6 @@
 package practice.decorator.part1.example1.decorator;
 
-import practice.decorator.part1.example1.service.Coffee;
+import practice.decorator.part1.example1.component.Coffee;
 
 public class MilkDecorator extends CoffeeDecorator {
 

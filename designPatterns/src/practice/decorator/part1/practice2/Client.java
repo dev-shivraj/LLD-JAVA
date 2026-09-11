@@ -3,8 +3,8 @@ package practice.decorator.part1.practice2;
 import practice.decorator.part1.practice2.decorator.EncryptionDecorator;
 import practice.decorator.part1.practice2.decorator.LoggingDecorator;
 import practice.decorator.part1.practice2.decorator.ValidationDecorator;
-import practice.decorator.part1.practice2.service.BasicDataService;
-import practice.decorator.part1.practice2.service.DataService;
+import practice.decorator.part1.practice2.component.BasicDataService;
+import practice.decorator.part1.practice2.component.DataService;
 
 public class Client {
 

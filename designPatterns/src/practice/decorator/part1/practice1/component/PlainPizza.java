@@ -1,4 +1,4 @@
-package practice.decorator.part1.practice1.service;
+package practice.decorator.part1.practice1.component;
 
 public class PlainPizza implements Pizza {
 

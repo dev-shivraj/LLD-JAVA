@@ -1,4 +1,4 @@
-package practice.decorator.part1.example2.service;
+package practice.decorator.part1.example2.component;
 
 public class BasicNotification implements Notification {
 

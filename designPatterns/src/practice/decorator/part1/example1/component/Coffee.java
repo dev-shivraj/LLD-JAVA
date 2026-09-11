@@ -1,4 +1,4 @@
-package practice.decorator.part1.example1.service;
+package practice.decorator.part1.example1.component;
 
 public interface Coffee {
 

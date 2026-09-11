@@ -1,4 +1,4 @@
-package practice.decorator.part1.practice2.service;
+package practice.decorator.part1.practice2.component;
 
 public interface DataService {
 

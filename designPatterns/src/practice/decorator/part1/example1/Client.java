@@ -2,8 +2,8 @@ package practice.decorator.part1.example1;
 
 import practice.decorator.part1.example1.decorator.MilkDecorator;
 import practice.decorator.part1.example1.decorator.SugarDecorator;
-import practice.decorator.part1.example1.service.Coffee;
-import practice.decorator.part1.example1.service.SimpleCoffee;
+import practice.decorator.part1.example1.component.Coffee;
+import practice.decorator.part1.example1.component.SimpleCoffee;
 
 public class Client {
 
