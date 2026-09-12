@@ -1,4 +1,4 @@
-package practice.registry.part1.miniproject.factory;
+package practice.registry.part1.miniproject.registry;
 
 import practice.registry.part1.miniproject.processor.PaymentProcessor;
 

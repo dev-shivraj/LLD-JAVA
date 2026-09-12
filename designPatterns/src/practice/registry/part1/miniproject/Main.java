@@ -1,6 +1,6 @@
 package practice.registry.part1.miniproject;
 
-import practice.registry.part1.miniproject.factory.PaymentRegistry;
+import practice.registry.part1.miniproject.registry.PaymentRegistry;
 import practice.registry.part1.miniproject.processor.CreditCardProcessor;
 import practice.registry.part1.miniproject.processor.UpiProcessor;
 import practice.registry.part1.miniproject.processor.WalletProcessor;
