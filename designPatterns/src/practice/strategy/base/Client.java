@@ -1,5 +1,7 @@
 package practice.strategy.base;
 
+import practice.strategy.base.service.GoogleMap;
+
 import java.util.Scanner;
 
 public class Client {

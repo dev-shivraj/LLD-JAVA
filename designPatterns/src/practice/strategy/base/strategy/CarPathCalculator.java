@@ -1,4 +1,6 @@
-package practice.strategy.base;
+package practice.strategy.base.strategy;
+
+import practice.strategy.base.component.Path;
 
 public class CarPathCalculator implements PathCalculator{
     @Override

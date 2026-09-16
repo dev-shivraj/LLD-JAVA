@@ -1,4 +1,4 @@
-package practice.strategy.base;
+package practice.strategy.base.component;
 
 public class Path {
 

@@ -1,4 +1,8 @@
-package practice.strategy.base;
+package practice.strategy.base.service;
+
+import practice.strategy.base.component.Path;
+import practice.strategy.base.strategy.PathCalculator;
+import practice.strategy.base.factory.PathCalculatorFactory;
 
 public class GoogleMap {
 

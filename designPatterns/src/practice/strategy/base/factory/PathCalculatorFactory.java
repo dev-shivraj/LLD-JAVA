@@ -1,4 +1,8 @@
-package practice.strategy.base;
+package practice.strategy.base.factory;
+
+import practice.strategy.base.strategy.CarPathCalculator;
+import practice.strategy.base.strategy.PathCalculator;
+import practice.strategy.base.strategy.WalkPathCalculator;
 
 import java.util.HashMap;
 import java.util.Map;
