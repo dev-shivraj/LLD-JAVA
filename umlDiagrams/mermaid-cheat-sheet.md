@@ -27,10 +27,8 @@ To write a diagram, wrap it in a fenced code block labeled `mermaid`. Inside, yo
 
 **How to write it:**
 ```
-```mermaid
 flowchart TD
     A --> B
-```
 ```
 
 **What it renders as:**
@@ -66,13 +64,11 @@ To control which way the diagram flows, put a direction code after `flowchart`.
 
 **How to write it:**
 ```
-```mermaid
 flowchart LR
     Client --> Controller
     Controller --> Service
     Service --> Repository
     Repository --> Database
-```
 ```
 
 **What it renders as:**
@@ -97,7 +93,6 @@ The brackets around a node name control its shape.
 
 **How to write it:**
 ```
-```mermaid
 flowchart LR
     A[Rectangle]
     B(Rounded)
@@ -106,7 +101,6 @@ flowchart LR
     E{Decision}
     F[(Database)]
     G{{Hexagon}}
-```
 ```
 
 **What it renders as:**
@@ -125,13 +119,11 @@ flowchart LR
 
 **How to write it:**
 ```
-```mermaid
 flowchart LR
     A -->|arrow| B
     B ---|line| C
     C -.->|dotted| D
     D ==>|thick| E
-```
 ```
 
 **What it renders as:**
@@ -147,7 +139,6 @@ flowchart LR
 
 **How to write it:**
 ```
-```mermaid
 flowchart LR
     Client --> API
     API --> Auth
@@ -155,7 +146,6 @@ flowchart LR
     OrderService --> PaymentService
     OrderService --> OrderRepository
     OrderRepository --> DB
-```
 ```
 
 **What it renders as:**
@@ -175,7 +165,6 @@ To group related nodes visually, wrap them in `subgraph ... end`.
 
 **How to write it:**
 ```
-```mermaid
 flowchart TB
     subgraph API_Layer[API Layer]
         Controller
@@ -188,7 +177,6 @@ flowchart TB
     end
     Controller --> Service
     Service --> Repository
-```
 ```
 
 **What it renders as:**
@@ -211,13 +199,11 @@ flowchart TB
 
 **How to write it:**
 ```
-```mermaid
 flowchart LR
     A[Client]
     B[Server]
     classDef important font-weight:bold
     class A important
-```
 ```
 
 **What it renders as:**
@@ -239,7 +225,6 @@ flowchart LR
 
 **How to write it:**
 ```
-```mermaid
 classDiagram
     class User {
         -Long id
@@ -249,7 +234,6 @@ classDiagram
         +logout()
         +updateProfile()
     }
-```
 ```
 
 **What it renders as:**
@@ -278,13 +262,11 @@ classDiagram
 
 **How to write it:**
 ```
-```mermaid
 classDiagram
     class PaymentService {
         +pay(amount: double) boolean
         +refund(paymentId: Long) void
     }
-```
 ```
 
 **What it renders as:**
@@ -300,19 +282,17 @@ classDiagram
 
 **How to write it:**
 ```
-```mermaid
 classDiagram
     class Configuration {
-        {static} +getInstance()
+        +getInstance$
     }
-```
 ```
 
 **What it renders as:**
 ```mermaid
 classDiagram
     class Configuration {
-        {static} +getInstance()
+        +getInstance$
     }
 ```
 
@@ -322,7 +302,6 @@ Use `<<abstract>>` or `<<interface>>` as the first line inside the class body. A
 
 **How to write it:**
 ```
-```mermaid
 classDiagram
     class Animal {
         <<abstract>>
@@ -333,7 +312,6 @@ classDiagram
         <<interface>>
         +pay(amount: double)
     }
-```
 ```
 
 **What it renders as:**
@@ -354,7 +332,6 @@ classDiagram
 
 **How to write it:**
 ```
-```mermaid
 classDiagram
     class PaymentStatus {
         <<enumeration>>
@@ -363,7 +340,6 @@ classDiagram
         FAILED
         REFUNDED
     }
-```
 ```
 
 **What it renders as:**
@@ -397,7 +373,6 @@ This is the syntax that most often trips people up — how you draw the line bet
 
 **How to write it:**
 ```
-```mermaid
 classDiagram
     class A
     class B
@@ -407,7 +382,6 @@ classDiagram
     A *-- B : composition
     A <|-- B : inheritance
     A <|.. B : realization
-```
 ```
 
 **What it renders as:**
@@ -429,12 +403,10 @@ Add quoted numbers before the relationship to say "how many" on each side.
 
 **How to write it:**
 ```
-```mermaid
 classDiagram
     User "1" --> "0..*" Order
     Order "1" --> "1" Payment
     Order "1" --> "0..1" Coupon
-```
 ```
 
 **What it renders as:**
@@ -458,7 +430,6 @@ classDiagram
 
 **How to write it:**
 ```
-```mermaid
 classDiagram
     class PaymentService {
         <<interface>>
@@ -483,7 +454,6 @@ classDiagram
     PaymentService <|.. UPIPayment
     OrderService --> PaymentService
     OrderService --> Order
-```
 ```
 
 **What it renders as:**
@@ -524,13 +494,11 @@ Use `participant X as Y` to give a long name a short, readable label. Use `actor
 
 **How to write it:**
 ```
-```mermaid
 sequenceDiagram
     actor User
     participant S as Server
     User->>S: Login
     S-->>User: Success
-```
 ```
 
 **What it renders as:**
@@ -552,12 +520,10 @@ sequenceDiagram
 
 **How to write it:**
 ```
-```mermaid
 sequenceDiagram
     A->>B: Request (solid)
     B-->>A: Response (dashed)
     A-)B: Fire-and-forget (async)
-```
 ```
 
 **What it renders as:**
@@ -574,7 +540,6 @@ sequenceDiagram
 
 **How to write it:**
 ```
-```mermaid
 sequenceDiagram
     Client->>Server: Request
     activate Server
@@ -582,7 +547,6 @@ sequenceDiagram
     Database-->>Server: Result
     deactivate Server
     Server-->>Client: Response
-```
 ```
 
 **What it renders as:**
@@ -600,12 +564,10 @@ sequenceDiagram
 
 **How to write it:**
 ```
-```mermaid
 sequenceDiagram
     Client->>Server: Request
     Note right of Server: Validate request
     Server-->>Client: Response
-```
 ```
 
 **What it renders as:**
@@ -622,7 +584,6 @@ Variants: `Note left of X`, `Note right of X`, `Note over X,Y`.
 
 **How to write it:**
 ```
-```mermaid
 sequenceDiagram
     Client->>Server: Request
     loop Retry
@@ -630,7 +591,6 @@ sequenceDiagram
         Database-->>Server: Result
     end
     Server-->>Client: Response
-```
 ```
 
 **What it renders as:**
@@ -648,7 +608,6 @@ sequenceDiagram
 
 **How to write it:**
 ```
-```mermaid
 sequenceDiagram
     Client->>Server: Login
     alt Valid credentials
@@ -656,7 +615,6 @@ sequenceDiagram
     else Invalid credentials
         Server-->>Client: Failure
     end
-```
 ```
 
 **What it renders as:**
@@ -674,13 +632,11 @@ sequenceDiagram
 
 **How to write it:**
 ```
-```mermaid
 sequenceDiagram
     Client->>Server: Request
     opt Cache hit
         Server-->>Client: Cached response
     end
-```
 ```
 
 **What it renders as:**
@@ -696,7 +652,6 @@ sequenceDiagram
 
 **How to write it:**
 ```
-```mermaid
 sequenceDiagram
     par Fetch user
         Service->>UserDB: Get user
@@ -705,7 +660,6 @@ sequenceDiagram
         Service->>OrderDB: Get orders
         OrderDB-->>Service: Orders
     end
-```
 ```
 
 **What it renders as:**
@@ -724,7 +678,6 @@ sequenceDiagram
 
 **How to write it:**
 ```
-```mermaid
 sequenceDiagram
     actor User
     participant Controller
@@ -745,7 +698,6 @@ sequenceDiagram
         OrderService-->>Controller: failure
         Controller-->>User: 400 Bad Request
     end
-```
 ```
 
 **What it renders as:**
@@ -782,14 +734,12 @@ sequenceDiagram
 
 **How to write it:**
 ```
-```mermaid
 stateDiagram-v2
     [*] --> Pending
     Pending --> Processing : start
     Processing --> Completed : success
     Processing --> Failed : error
     Completed --> [*]
-```
 ```
 
 **What it renders as:**
@@ -806,7 +756,6 @@ stateDiagram-v2
 
 **How to write it:**
 ```
-```mermaid
 stateDiagram-v2
     [*] --> Order
     state Order {
@@ -816,7 +765,6 @@ stateDiagram-v2
         Shipped --> Delivered
     }
     Order --> Cancelled
-```
 ```
 
 **What it renders as:**
@@ -836,7 +784,6 @@ stateDiagram-v2
 
 **How to write it:**
 ```
-```mermaid
 stateDiagram-v2
     [*] --> Created
     Created --> PaymentPending : checkout
@@ -849,7 +796,6 @@ stateDiagram-v2
     PaymentPending --> Cancelled : cancel
     Delivered --> [*]
     Cancelled --> [*]
-```
 ```
 
 **What it renders as:**
@@ -883,12 +829,10 @@ stateDiagram-v2
 
 **How to write it:**
 ```
-```mermaid
 erDiagram
     USER ||--o{ ORDER : places
     ORDER ||--|{ ORDER_ITEM : contains
     PRODUCT ||--o{ ORDER_ITEM : included_in
-```
 ```
 
 **What it renders as:**
@@ -905,7 +849,6 @@ Key markers: `PK` = Primary Key, `FK` = Foreign Key, `UK` = Unique Key.
 
 **How to write it:**
 ```
-```mermaid
 erDiagram
     USER {
         bigint id PK
@@ -919,7 +862,6 @@ erDiagram
         varchar status
     }
     USER ||--o{ ORDER : places
-```
 ```
 
 **What it renders as:**
@@ -947,7 +889,6 @@ erDiagram
 
 **How to write it:**
 ```
-```mermaid
 gitGraph
     commit
     commit
@@ -957,7 +898,6 @@ gitGraph
     checkout main
     merge feature
     commit
-```
 ```
 
 **What it renders as:**
@@ -977,13 +917,11 @@ gitGraph
 
 **How to write it:**
 ```
-```mermaid
 pie title Technology Usage
     "Java" : 40
     "JavaScript" : 30
     "Python" : 20
     "Other" : 10
-```
 ```
 
 **What it renders as:**
@@ -999,13 +937,11 @@ pie title Technology Usage
 
 **How to write it:**
 ```
-```mermaid
 timeline
     title Project Timeline
     2024 : Project started
     2025 : Major release
     2026 : Migration
-```
 ```
 
 **What it renders as:**
@@ -1021,7 +957,6 @@ timeline
 
 **How to write it:**
 ```
-```mermaid
 mindmap
     root((LLD))
         OOP
@@ -1031,7 +966,6 @@ mindmap
             Class Diagram
             Sequence Diagram
         Machine Coding
-```
 ```
 
 **What it renders as:**
@@ -1057,7 +991,6 @@ Flowcharts are the easiest tool for documenting backend architecture.
 
 **How to write it:**
 ```
-```mermaid
 flowchart LR
     Client --> LoadBalancer
     LoadBalancer --> API
@@ -1067,7 +1000,6 @@ flowchart LR
     OrderService --> OrderRepository
     OrderRepository --> Database
     PaymentService --> PaymentGateway
-```
 ```
 
 **What it renders as:**
@@ -1087,7 +1019,6 @@ flowchart LR
 
 **How to write it:**
 ```
-```mermaid
 flowchart TB
     subgraph Presentation
         Controller
@@ -1104,7 +1035,6 @@ flowchart TB
     Controller --> Service
     Service --> Repository
     Repository --> Database
-```
 ```
 
 **What it renders as:**
@@ -1131,7 +1061,6 @@ flowchart TB
 
 **How to write it:**
 ```
-```mermaid
 flowchart LR
     Client --> API_Gateway
     API_Gateway --> UserService
@@ -1140,7 +1069,6 @@ flowchart LR
     UserService --> UserDB
     OrderService --> OrderDB
     PaymentService --> PaymentDB
-```
 ```
 
 **What it renders as:**
@@ -1165,11 +1093,9 @@ Use `%%` — comments are never rendered.
 
 **How to write it:**
 ```
-```mermaid
 flowchart LR
     %% This is a comment
     A --> B
-```
 ```
 
 **What it renders as:**
@@ -1185,10 +1111,8 @@ A bare ID doubles as its own label. To show different text than the ID, add `[..
 
 **How to write it:**
 ```
-```mermaid
 flowchart LR
     US[User Service] --> PS[Payment Service]
-```
 ```
 
 **What it renders as:**
@@ -1203,10 +1127,8 @@ Wrap text in quotes when it contains symbols or spaces that could confuse the pa
 
 **How to write it:**
 ```
-```mermaid
 flowchart LR
     A["POST /api/orders"] --> B["Order Service"]
-```
 ```
 
 **What it renders as:**
@@ -1221,10 +1143,8 @@ Use `<br/>` inside the label text.
 
 **How to write it:**
 ```
-```mermaid
 flowchart TD
     A["User<br/>Service"]
-```
 ```
 
 **What it renders as:**
@@ -1239,11 +1159,9 @@ Use sparingly.
 
 **How to write it:**
 ```
-```mermaid
 flowchart LR
     A[Google]
     click A "https://google.com"
-```
 ```
 
 **What it renders as:**
@@ -1262,8 +1180,7 @@ Avoid overusing this in documentation.
 To embed any diagram in a README or Markdown file, wrap it in a fenced code block labeled `mermaid`. GitHub, GitLab, and most Markdown renderers (including VS Code's preview) will render it automatically.
 
 **How to write it:**
-````
-```mermaid
+```
 classDiagram
     class User {
         -Long id
@@ -1276,7 +1193,6 @@ classDiagram
     }
     User "1" --> "*" Order
 ```
-````
 
 **What it renders as:**
 ```mermaid
@@ -1397,7 +1313,6 @@ o{   zero or many
 
 **How to write it:**
 ```
-```mermaid
 flowchart TD
     A[Understand Requirements] --> B[Identify Entities]
     B --> C[Identify Responsibilities]
@@ -1406,7 +1321,6 @@ flowchart TD
     E --> F[Create Sequence Diagram]
     F --> G[Implement Classes]
     G --> H[Review Design]
-```
 ```
 
 **What it renders as:**
