@@ -1,1164 +1,1284 @@
-Mermaid Diagram Cheat Sheet
+# Mermaid Diagram Guide
 
-A practical Mermaid reference for UML, LLD, software architecture, backend design, and technical documentation.
+A README-style guide to writing Mermaid diagrams for UML, low-level design (LLD), architecture, and technical documentation. Every example shows **the code you write**, followed by **what it renders as**.
 
-⸻
+---
 
-1. Basic Mermaid Structure
+## Table of Contents
 
-Every Mermaid diagram starts with a diagram type.
+1. [How Mermaid Works](#1-how-mermaid-works)
+2. [Flowcharts](#2-flowcharts)
+3. [Class Diagrams](#3-class-diagrams)
+4. [Class Relationships](#4-class-relationships)
+5. [Sequence Diagrams](#5-sequence-diagrams)
+6. [State Diagrams](#6-state-diagrams)
+7. [Entity-Relationship Diagrams](#7-entity-relationship-diagrams)
+8. [Other Diagram Types](#8-other-diagram-types)
+9. [Architecture Diagrams](#9-architecture-diagrams)
+10. [Syntax Tips](#10-syntax-tips)
+11. [Embedding in Markdown](#11-embedding-in-markdown)
+12. [Quick Reference](#12-quick-reference)
 
+---
+
+## 1. How Mermaid Works
+
+To write a diagram, wrap it in a fenced code block labeled `mermaid`. Inside, you always start with a **diagram type**, then define the diagram body.
+
+**How to write it:**
+```
+```mermaid
 flowchart TD
-A --> B
+    A --> B
+```
+```
 
-General format:
-
-diagramType
-diagram definition
-
-Common diagram types:
-
-Diagram	Declaration	Main Usage
-Flowchart	flowchart TD	Flow/process/architecture
-Class	classDiagram	UML / LLD
-Sequence	sequenceDiagram	API/service interactions
-State	stateDiagram-v2	Object/system states
-ER	erDiagram	Database relationships
-Journey	journey	User journey
-Git	gitGraph	Git workflow
-Mindmap	mindmap	Brainstorming
-Pie	pie	Simple proportions
-Timeline	timeline	Chronological events
-Requirement	requirementDiagram	Requirements
-C4	C4Context	Architecture diagrams
-
-For LLD, the most important ones are:
-
-classDiagram
-sequenceDiagram
-stateDiagram-v2
-flowchart
-erDiagram
-
-⸻
-
-2. Flowchart
-
-Basic
-
+**What it renders as:**
+```mermaid
 flowchart TD
-A --> B
-B --> C
+    A --> B
+```
 
-TD means:
+### Diagram Types
 
-Top → Down
+| Diagram | Declaration | Main Use |
+|---|---|---|
+| Flowchart | `flowchart TD` | Flow / process / architecture |
+| Class | `classDiagram` | UML / LLD |
+| Sequence | `sequenceDiagram` | API / service interactions |
+| State | `stateDiagram-v2` | Object / system states |
+| Entity-Relationship | `erDiagram` | Database relationships |
+| Journey | `journey` | User journey |
+| Git | `gitGraph` | Git workflow |
+| Mindmap | `mindmap` | Brainstorming |
+| Pie | `pie` | Simple proportions |
+| Timeline | `timeline` | Chronological events |
 
-Other directions:
+**For LLD work, focus on:** `classDiagram`, `sequenceDiagram`, `stateDiagram-v2`, `flowchart`, `erDiagram`
 
-TD  Top to Bottom
-TB  Top to Bottom
-BT  Bottom to Top
-LR  Left to Right
-RL  Right to Left
+---
 
-Example:
+## 2. Flowcharts
 
+### Writing Direction
+
+To control which way the diagram flows, put a direction code after `flowchart`.
+
+**How to write it:**
+```
+```mermaid
 flowchart LR
-Client --> Controller
-Controller --> Service
-Service --> Repository
-Repository --> Database
+    Client --> Controller
+    Controller --> Service
+    Service --> Repository
+    Repository --> Database
+```
+```
 
-⸻
-
-3. Flowchart Nodes
-
-Rectangle
-
-flowchart TD
-A[User]
-
-Rounded rectangle
-
-flowchart TD
-A(User)
-
-Stadium
-
-flowchart TD
-A([Start])
-
-Circle
-
-flowchart TD
-A((Process))
-
-Diamond / Decision
-
-flowchart TD
-A{Is valid?}
-
-Database
-
-flowchart TD
-A[(Database)]
-
-Hexagon
-
-flowchart TD
-A{{Service}}
-
-⸻
-
-4. Flowchart Connections
-
-Arrow
-
+**What it renders as:**
+```mermaid
 flowchart LR
-A --> B
+    Client --> Controller
+    Controller --> Service
+    Service --> Repository
+    Repository --> Database
+```
 
-Line without arrow
+| Code | Direction |
+|---|---|
+| `TD` / `TB` | Top → Bottom |
+| `BT` | Bottom → Top |
+| `LR` | Left → Right |
+| `RL` | Right → Left |
 
+### Writing Different Node Shapes
+
+The brackets around a node name control its shape.
+
+**How to write it:**
+```
+```mermaid
 flowchart LR
-A --- B
+    A[Rectangle]
+    B(Rounded)
+    C([Stadium])
+    D((Circle))
+    E{Decision}
+    F[(Database)]
+    G{{Hexagon}}
+```
+```
 
-Dotted arrow
-
+**What it renders as:**
+```mermaid
 flowchart LR
-A -.-> B
+    A[Rectangle]
+    B(Rounded)
+    C([Stadium])
+    D((Circle))
+    E{Decision}
+    F[(Database)]
+    G{{Hexagon}}
+```
 
-Thick arrow
+### Writing Different Connection Styles
 
+**How to write it:**
+```
+```mermaid
 flowchart LR
-A ==> B
+    A -->|arrow| B
+    B ---|line| C
+    C -.->|dotted| D
+    D ==>|thick| E
+```
+```
 
-Arrow with label
-
+**What it renders as:**
+```mermaid
 flowchart LR
-A -->|request| B
+    A -->|arrow| B
+    B ---|line| C
+    C -.->|dotted| D
+    D ==>|thick| E
+```
 
-or:
+### Writing a Diagram with Multiple Branches
 
+**How to write it:**
+```
+```mermaid
 flowchart LR
-A -- request --> B
+    Client --> API
+    API --> Auth
+    API --> OrderService
+    OrderService --> PaymentService
+    OrderService --> OrderRepository
+    OrderRepository --> DB
+```
+```
 
-Dotted connection with label
-
+**What it renders as:**
+```mermaid
 flowchart LR
-A -. dependency .-> B
+    Client --> API
+    API --> Auth
+    API --> OrderService
+    OrderService --> PaymentService
+    OrderService --> OrderRepository
+    OrderRepository --> DB
+```
 
-⸻
+### Writing Subgraphs (Grouping Nodes)
 
-5. Flowchart Multiple Connections
+To group related nodes visually, wrap them in `subgraph ... end`.
 
-flowchart TD
-A --> B
-A --> C
-B --> D
-C --> D
-
-Useful for architecture:
-
-flowchart LR
-Client --> API
-API --> Auth
-API --> OrderService
-OrderService --> PaymentService
-OrderService --> OrderRepository
-OrderRepository --> DB
-
-⸻
-
-6. Flowchart Subgraphs
-
-Useful for grouping components.
-
+**How to write it:**
+```
+```mermaid
 flowchart TB
-subgraph Backend
-Controller --> Service
-Service --> Repository
-end
-Client --> Controller
-Repository --> Database
+    subgraph API_Layer[API Layer]
+        Controller
+    end
+    subgraph Business_Layer[Business Layer]
+        Service
+    end
+    subgraph Data_Layer[Data Layer]
+        Repository
+    end
+    Controller --> Service
+    Service --> Repository
+```
+```
 
-With a title:
-
+**What it renders as:**
+```mermaid
 flowchart TB
-subgraph API Layer
-Controller
-end
-subgraph Business Layer
-Service
-end
-subgraph Data Layer
-Repository
-end
-Controller --> Service
-Service --> Repository
+    subgraph API_Layer[API Layer]
+        Controller
+    end
+    subgraph Business_Layer[Business Layer]
+        Service
+    end
+    subgraph Data_Layer[Data Layer]
+        Repository
+    end
+    Controller --> Service
+    Service --> Repository
+```
 
-⸻
+### Writing Basic Styling
 
-7. Flowchart Styling
-
-Class definition
-
+**How to write it:**
+```
+```mermaid
 flowchart LR
-A[Client]
-B[Server]
-classDef important font-weight:bold
-class A important
+    A[Client]
+    B[Server]
+    classDef important font-weight:bold
+    class A important
+```
+```
 
-For most documentation, avoid excessive styling. Let the diagram remain readable.
+**What it renders as:**
+```mermaid
+flowchart LR
+    A[Client]
+    B[Server]
+    classDef important font-weight:bold
+    class A important
+```
 
-⸻
+> Keep styling minimal — readability matters more than decoration.
 
-8. Class Diagram — Most Important for LLD
+---
 
-Declaration:
+## 3. Class Diagrams
 
+### Writing a Class with Fields and Methods
+
+**How to write it:**
+```
+```mermaid
 classDiagram
+    class User {
+        -Long id
+        -String name
+        #String email
+        +login()
+        +logout()
+        +updateProfile()
+    }
+```
+```
 
-Basic class:
-
+**What it renders as:**
+```mermaid
 classDiagram
-class User
+    class User {
+        -Long id
+        -String name
+        #String email
+        +login()
+        +logout()
+        +updateProfile()
+    }
+```
 
-⸻
+**Visibility symbols:**
 
-9. Class Attributes
+| Symbol | Meaning |
+|---|---|
+| `+` | Public |
+| `-` | Private |
+| `#` | Protected |
+| `~` | Package |
 
+### Writing Method Signatures with Types
+
+**How to write it:**
+```
+```mermaid
 classDiagram
-class User {
-Long id
-String name
-String email
-}
+    class PaymentService {
+        +pay(amount: double) boolean
+        +refund(paymentId: Long) void
+    }
+```
+```
 
-⸻
-
-10. Class Methods
-
+**What it renders as:**
+```mermaid
 classDiagram
-class User {
-Long id
-String name
-login()
-logout()
-updateProfile()
-}
+    class PaymentService {
+        +pay(amount: double) boolean
+        +refund(paymentId: Long) void
+    }
+```
 
-⸻
+### Writing Static Members
 
-11. Visibility
-
-UML visibility:
-
-+ public
-- private
-# protected
-~ package
-
-Example:
-
+**How to write it:**
+```
+```mermaid
 classDiagram
-class User {
--Long id
--String name
-#String email
-+login()
-+logout()
-}
+    class Configuration {
+        {static} +getInstance()
+    }
+```
+```
 
-⸻
-
-12. Method Parameters and Return Types
-
+**What it renders as:**
+```mermaid
 classDiagram
-class PaymentService {
-+pay(amount: double) boolean
-+refund(paymentId: Long) void
-}
+    class Configuration {
+        {static} +getInstance()
+    }
+```
 
-Another style:
+### Writing Abstract Classes and Interfaces
 
+Use `<<abstract>>` or `<<interface>>` as the first line inside the class body. A trailing `*` marks an abstract method.
+
+**How to write it:**
+```
+```mermaid
 classDiagram
-class User {
-+getName() String
-+setName(name: String) void
-}
+    class Animal {
+        <<abstract>>
+        +eat()
+        +makeSound()*
+    }
+    class PaymentService {
+        <<interface>>
+        +pay(amount: double)
+    }
+```
+```
 
-⸻
-
-13. Static Members
-
+**What it renders as:**
+```mermaid
 classDiagram
-class Configuration {
-{static} +getInstance()
-}
+    class Animal {
+        <<abstract>>
+        +eat()
+        +makeSound()*
+    }
+    class PaymentService {
+        <<interface>>
+        +pay(amount: double)
+    }
+```
 
-⸻
+### Writing an Enum
 
-14. Abstract Class
-
+**How to write it:**
+```
+```mermaid
 classDiagram
-class Animal {
-<<abstract>>
-+eat()
-+makeSound()*
-}
+    class PaymentStatus {
+        <<enumeration>>
+        PENDING
+        SUCCESS
+        FAILED
+        REFUNDED
+    }
+```
+```
 
-* is commonly used to indicate an abstract operation.
-
-⸻
-
-15. Interface
-
+**What it renders as:**
+```mermaid
 classDiagram
-class PaymentService {
-<<interface>>
-+pay(amount: double)
-}
+    class PaymentStatus {
+        <<enumeration>>
+        PENDING
+        SUCCESS
+        FAILED
+        REFUNDED
+    }
+```
 
-⸻
+---
 
-16. Enum
+## 4. Class Relationships
 
+This is the syntax that most often trips people up — how you draw the line between two classes changes what it means.
+
+| Relationship | Syntax | Meaning | Java Equivalent |
+|---|---|---|---|
+| Association | `A --> B` | A knows/uses B | field reference |
+| Inheritance | `A <\|-- B` | B extends A | `class B extends A` |
+| Realization | `A <\|.. B` | B implements A | `class B implements A` |
+| Composition | `A *-- B` | A owns B (B can't exist without A) | strong ownership |
+| Aggregation | `A o-- B` | A contains B (B exists independently) | weak ownership |
+| Dependency | `A ..> B` | A depends on B (e.g., method param) | parameter/local use |
+
+### Writing Each Relationship Type
+
+**How to write it:**
+```
+```mermaid
 classDiagram
-class PaymentStatus {
-<<enumeration>>
-PENDING
-SUCCESS
-FAILED
-REFUNDED
-}
+    class A
+    class B
+    A --> B : association
+    A ..> B : dependency
+    A o-- B : aggregation
+    A *-- B : composition
+    A <|-- B : inheritance
+    A <|.. B : realization
+```
+```
 
-⸻
-
-17. Relationships — Extremely Important
-
-Association
-
+**What it renders as:**
+```mermaid
 classDiagram
-User --> Order
+    class A
+    class B
+    A --> B : association
+    A ..> B : dependency
+    A o-- B : aggregation
+    A *-- B : composition
+    A <|-- B : inheritance
+    A <|.. B : realization
+```
 
-Meaning:
+### Writing Multiplicity (Cardinality)
 
-User knows/uses Order
+Add quoted numbers before the relationship to say "how many" on each side.
 
-⸻
-
-18. Association with Multiplicity
-
+**How to write it:**
+```
+```mermaid
 classDiagram
-User "1" --> "*" Order
+    User "1" --> "0..*" Order
+    Order "1" --> "1" Payment
+    Order "1" --> "0..1" Coupon
+```
+```
 
-Meaning:
-
-One User → Many Orders
-
-Common multiplicities:
-
-"1"
-"0..1"
-"*"
-"0..*"
-"1..*"
-"2..5"
-
-Examples:
-
+**What it renders as:**
+```mermaid
 classDiagram
-User "1" --> "0..*" Order
-Order "1" --> "1" Payment
-Order "1" --> "0..1" Coupon
+    User "1" --> "0..*" Order
+    Order "1" --> "1" Payment
+    Order "1" --> "0..1" Coupon
+```
 
-⸻
+| Notation | Meaning |
+|---|---|
+| `"1"` | Exactly one |
+| `"0..1"` | Zero or one |
+| `"*"` | Many |
+| `"0..*"` | Zero or many |
+| `"1..*"` | One or many |
+| `"2..5"` | Two to five |
 
-19. Inheritance / Generalization
+### Writing a Full LLD Class Diagram
 
+**How to write it:**
+```
+```mermaid
 classDiagram
-Animal <|-- Dog
-Animal <|-- Cat
+    class PaymentService {
+        <<interface>>
+        +pay(amount: double) boolean
+    }
+    class CreditCardPayment {
+        +pay(amount: double) boolean
+    }
+    class UPIPayment {
+        +pay(amount: double) boolean
+    }
+    class OrderService {
+        -PaymentService paymentService
+        +placeOrder(order: Order) boolean
+    }
+    class Order {
+        -Long id
+        -double amount
+        +getAmount() double
+    }
+    PaymentService <|.. CreditCardPayment
+    PaymentService <|.. UPIPayment
+    OrderService --> PaymentService
+    OrderService --> Order
+```
+```
 
-Meaning:
-
-Dog extends Animal
-Cat extends Animal
-
-Java:
-
-class Dog extends Animal
-
-⸻
-
-20. Interface Realization
-
+**What it renders as:**
+```mermaid
 classDiagram
-PaymentService <|.. CreditCardPayment
-PaymentService <|.. PaypalPayment
+    class PaymentService {
+        <<interface>>
+        +pay(amount: double) boolean
+    }
+    class CreditCardPayment {
+        +pay(amount: double) boolean
+    }
+    class UPIPayment {
+        +pay(amount: double) boolean
+    }
+    class OrderService {
+        -PaymentService paymentService
+        +placeOrder(order: Order) boolean
+    }
+    class Order {
+        -Long id
+        -double amount
+        +getAmount() double
+    }
+    PaymentService <|.. CreditCardPayment
+    PaymentService <|.. UPIPayment
+    OrderService --> PaymentService
+    OrderService --> Order
+```
 
-Meaning:
+---
 
-CreditCardPayment implements PaymentService
-PaypalPayment implements PaymentService
+## 5. Sequence Diagrams
 
-Java:
+### Writing Participants
 
-class CreditCardPayment implements PaymentService
+Use `participant X as Y` to give a long name a short, readable label. Use `actor` instead of `participant` for a human user.
 
-⸻
-
-21. Composition
-
-classDiagram
-Order *-- OrderItem
-
-Meaning:
-
-Order owns OrderItem
-
-If the parent is destroyed, the child generally has no independent lifecycle.
-
-Example:
-
-classDiagram
-House *-- Room
-
-⸻
-
-22. Aggregation
-
-classDiagram
-Department o-- Employee
-
-Meaning:
-
-Department contains Employees
-
-But the Employee can exist independently.
-
-⸻
-
-23. Dependency
-
-classDiagram
-OrderService ..> PaymentService
-
-Meaning:
-
-OrderService depends on PaymentService
-
-Typical Java example:
-
-class OrderService {
-void placeOrder(PaymentService paymentService) {
-}
-}
-
-⸻
-
-24. Common UML Relationship Cheat Sheet
-
-Association       -->
-Inheritance       <|--
-Realization       <|..
-Composition       *--
-Aggregation       o--
-Dependency        ..>
-
-Quick memory:
-
-<|--   extends
-<|..   implements
-*--    composition
-o--    aggregation
--->    association
-..>    dependency
-
-⸻
-
-25. Complete LLD Class Diagram Example
-
-classDiagram
-class PaymentService {
-<<interface>>
-+pay(amount: double) boolean
-}
-class CreditCardPayment {
-+pay(amount: double) boolean
-}
-class UPIPayment {
-+pay(amount: double) boolean
-}
-class OrderService {
--PaymentService paymentService
-+placeOrder(order: Order) boolean
-}
-class Order {
--Long id
--double amount
-+getAmount() double
-}
-PaymentService <|.. CreditCardPayment
-PaymentService <|.. UPIPayment
-OrderService --> PaymentService
-OrderService --> Order
-
-⸻
-
-26. Sequence Diagram
-
-Declaration:
-
+**How to write it:**
+```
+```mermaid
 sequenceDiagram
+    actor User
+    participant S as Server
+    User->>S: Login
+    S-->>User: Success
+```
+```
 
-Basic:
-
+**What it renders as:**
+```mermaid
 sequenceDiagram
-Client->>Server: Request
-Server-->>Client: Response
+    actor User
+    participant S as Server
+    User->>S: Login
+    S-->>User: Success
+```
 
-⸻
+### Writing Message Types
 
-27. Participants
+| Syntax | Meaning |
+|---|---|
+| `A->>B: msg` | Solid arrow (call) |
+| `A-->>B: msg` | Dashed arrow (response) |
+| `A-)B: msg` | Async message |
 
+**How to write it:**
+```
+```mermaid
 sequenceDiagram
-participant C as Client
-participant S as Server
-C->>S: Request
-S-->>C: Response
+    A->>B: Request (solid)
+    B-->>A: Response (dashed)
+    A-)B: Fire-and-forget (async)
+```
+```
 
-This makes long names easier to read.
-
-⸻
-
-28. Actor
-
+**What it renders as:**
+```mermaid
 sequenceDiagram
-actor User
-participant System
-User->>System: Login
-System-->>User: Success
+    A->>B: Request (solid)
+    B-->>A: Response (dashed)
+    A-)B: Fire-and-forget (async)
+```
 
-⸻
+### Writing Activation Bars
 
-29. Message Types
+`activate` / `deactivate` show how long a participant is "busy" handling a call.
 
-Solid arrow:
-
+**How to write it:**
+```
+```mermaid
 sequenceDiagram
-A->>B: Request
+    Client->>Server: Request
+    activate Server
+    Server->>Database: Query
+    Database-->>Server: Result
+    deactivate Server
+    Server-->>Client: Response
+```
+```
 
-Dashed response:
-
+**What it renders as:**
+```mermaid
 sequenceDiagram
-A->>B: Request
-B-->>A: Response
+    Client->>Server: Request
+    activate Server
+    Server->>Database: Query
+    Database-->>Server: Result
+    deactivate Server
+    Server-->>Client: Response
+```
 
-Synchronous-style call:
+### Writing Notes
 
+**How to write it:**
+```
+```mermaid
 sequenceDiagram
-A->>B: Call
+    Client->>Server: Request
+    Note right of Server: Validate request
+    Server-->>Client: Response
+```
+```
 
-Asynchronous-style message:
-
+**What it renders as:**
+```mermaid
 sequenceDiagram
-A-)B: Async message
+    Client->>Server: Request
+    Note right of Server: Validate request
+    Server-->>Client: Response
+```
 
-⸻
+Variants: `Note left of X`, `Note right of X`, `Note over X,Y`.
 
-30. Activation
+### Writing a Loop
 
+**How to write it:**
+```
+```mermaid
 sequenceDiagram
-Client->>Server: Request
-activate Server
-Server->>Database: Query
-Database-->>Server: Result
-deactivate Server
-Server-->>Client: Response
+    Client->>Server: Request
+    loop Retry
+        Server->>Database: Query
+        Database-->>Server: Result
+    end
+    Server-->>Client: Response
+```
+```
 
-⸻
-
-31. Notes
-
+**What it renders as:**
+```mermaid
 sequenceDiagram
-Client->>Server: Request
-Note right of Server: Validate request
-Server-->>Client: Response
+    Client->>Server: Request
+    loop Retry
+        Server->>Database: Query
+        Database-->>Server: Result
+    end
+    Server-->>Client: Response
+```
 
-Left:
+### Writing Alternative Paths (if / else)
 
+**How to write it:**
+```
+```mermaid
 sequenceDiagram
-Note left of Client: User action
-Client->>Server: Request
+    Client->>Server: Login
+    alt Valid credentials
+        Server-->>Client: Success
+    else Invalid credentials
+        Server-->>Client: Failure
+    end
+```
+```
 
-Over participants:
-
+**What it renders as:**
+```mermaid
 sequenceDiagram
-Note over Client,Server: Authentication flow
+    Client->>Server: Login
+    alt Valid credentials
+        Server-->>Client: Success
+    else Invalid credentials
+        Server-->>Client: Failure
+    end
+```
 
-⸻
+### Writing an Optional Step
 
-32. Loops
-
+**How to write it:**
+```
+```mermaid
 sequenceDiagram
-Client->>Server: Request
-loop Retry
-Server->>Database: Query
-Database-->>Server: Result
-end
-Server-->>Client: Response
+    Client->>Server: Request
+    opt Cache hit
+        Server-->>Client: Cached response
+    end
+```
+```
 
-⸻
-
-33. Alternative / If-Else
-
+**What it renders as:**
+```mermaid
 sequenceDiagram
-Client->>Server: Login
-alt Valid credentials
-Server-->>Client: Success
-else Invalid credentials
-Server-->>Client: Failure
-end
+    Client->>Server: Request
+    opt Cache hit
+        Server-->>Client: Cached response
+    end
+```
 
-⸻
+### Writing Parallel Actions
 
-34. Optional Flow
-
+**How to write it:**
+```
+```mermaid
 sequenceDiagram
-Client->>Server: Request
-opt Cache hit
-Server-->>Client: Cached response
-end
+    par Fetch user
+        Service->>UserDB: Get user
+        UserDB-->>Service: User
+    and Fetch orders
+        Service->>OrderDB: Get orders
+        OrderDB-->>Service: Orders
+    end
+```
+```
 
-⸻
-
-35. Parallel Execution
-
+**What it renders as:**
+```mermaid
 sequenceDiagram
-par Fetch user
-Service->>UserDB: Get user
-UserDB-->>Service: User
-and Fetch orders
-Service->>OrderDB: Get orders
-OrderDB-->>Service: Orders
-end
+    par Fetch user
+        Service->>UserDB: Get user
+        UserDB-->>Service: User
+    and Fetch orders
+        Service->>OrderDB: Get orders
+        OrderDB-->>Service: Orders
+    end
+```
 
-⸻
+### Writing a Full LLD Sequence Diagram
 
-36. Sequence Diagram — LLD Example
-
+**How to write it:**
+```
+```mermaid
 sequenceDiagram
-actor User
-participant Controller
-participant OrderService
-participant PaymentService
-participant OrderRepository
-User->>Controller: placeOrder(request)
-Controller->>OrderService: placeOrder(request)
-OrderService->>PaymentService: pay(amount)
-alt Payment successful
-PaymentService-->>OrderService: success
-OrderService->>OrderRepository: save(order)
-OrderRepository-->>OrderService: order
-OrderService-->>Controller: success
-Controller-->>User: 201 Created
-else Payment failed
-PaymentService-->>OrderService: failure
-OrderService-->>Controller: failure
-Controller-->>User: 400 Bad Request
-end
+    actor User
+    participant Controller
+    participant OrderService
+    participant PaymentService
+    participant OrderRepository
+    User->>Controller: placeOrder(request)
+    Controller->>OrderService: placeOrder(request)
+    OrderService->>PaymentService: pay(amount)
+    alt Payment successful
+        PaymentService-->>OrderService: success
+        OrderService->>OrderRepository: save(order)
+        OrderRepository-->>OrderService: order
+        OrderService-->>Controller: success
+        Controller-->>User: 201 Created
+    else Payment failed
+        PaymentService-->>OrderService: failure
+        OrderService-->>Controller: failure
+        Controller-->>User: 400 Bad Request
+    end
+```
+```
 
-⸻
+**What it renders as:**
+```mermaid
+sequenceDiagram
+    actor User
+    participant Controller
+    participant OrderService
+    participant PaymentService
+    participant OrderRepository
+    User->>Controller: placeOrder(request)
+    Controller->>OrderService: placeOrder(request)
+    OrderService->>PaymentService: pay(amount)
+    alt Payment successful
+        PaymentService-->>OrderService: success
+        OrderService->>OrderRepository: save(order)
+        OrderRepository-->>OrderService: order
+        OrderService-->>Controller: success
+        Controller-->>User: 201 Created
+    else Payment failed
+        PaymentService-->>OrderService: failure
+        OrderService-->>Controller: failure
+        Controller-->>User: 400 Bad Request
+    end
+```
 
-37. State Diagram
+---
 
-Declaration:
+## 6. State Diagrams
 
+### Writing Basic States and Transitions
+
+`[*]` represents the initial/final state. The format is `StateA --> StateB : event`.
+
+**How to write it:**
+```
+```mermaid
 stateDiagram-v2
+    [*] --> Pending
+    Pending --> Processing : start
+    Processing --> Completed : success
+    Processing --> Failed : error
+    Completed --> [*]
+```
+```
 
-Basic:
-
+**What it renders as:**
+```mermaid
 stateDiagram-v2
-[*] --> Pending
-Pending --> Processing
-Processing --> Completed
-Completed --> [*]
+    [*] --> Pending
+    Pending --> Processing : start
+    Processing --> Completed : success
+    Processing --> Failed : error
+    Completed --> [*]
+```
 
-[*] represents the initial/final state.
+### Writing a Composite (Nested) State
 
-⸻
-
-38. State Transitions
-
+**How to write it:**
+```
+```mermaid
 stateDiagram-v2
-Pending --> Processing : start
-Processing --> Completed : success
-Processing --> Failed : error
+    [*] --> Order
+    state Order {
+        [*] --> Created
+        Created --> Paid
+        Paid --> Shipped
+        Shipped --> Delivered
+    }
+    Order --> Cancelled
+```
+```
 
-Format:
-
-StateA --> StateB : event
-
-⸻
-
-39. Composite State
-
+**What it renders as:**
+```mermaid
 stateDiagram-v2
-[*] --> Order
-state Order {
-[*] --> Created
-Created --> Paid
-Paid --> Shipped
-Shipped --> Delivered
-}
-Order --> Cancelled
+    [*] --> Order
+    state Order {
+        [*] --> Created
+        Created --> Paid
+        Paid --> Shipped
+        Shipped --> Delivered
+    }
+    Order --> Cancelled
+```
 
-⸻
+### Writing a Full LLD State Diagram
 
-40. State Diagram — LLD Example
-
+**How to write it:**
+```
+```mermaid
 stateDiagram-v2
-[*] --> Created
-Created --> PaymentPending : checkout
-PaymentPending --> Paid : payment success
-PaymentPending --> PaymentFailed : payment failure
-PaymentFailed --> PaymentPending : retry
-Paid --> Shipped : dispatch
-Shipped --> Delivered : delivery
-Created --> Cancelled : cancel
-PaymentPending --> Cancelled : cancel
-Delivered --> [*]
-Cancelled --> [*]
+    [*] --> Created
+    Created --> PaymentPending : checkout
+    PaymentPending --> Paid : payment success
+    PaymentPending --> PaymentFailed : payment failure
+    PaymentFailed --> PaymentPending : retry
+    Paid --> Shipped : dispatch
+    Shipped --> Delivered : delivery
+    Created --> Cancelled : cancel
+    PaymentPending --> Cancelled : cancel
+    Delivered --> [*]
+    Cancelled --> [*]
+```
+```
 
-⸻
+**What it renders as:**
+```mermaid
+stateDiagram-v2
+    [*] --> Created
+    Created --> PaymentPending : checkout
+    PaymentPending --> Paid : payment success
+    PaymentPending --> PaymentFailed : payment failure
+    PaymentFailed --> PaymentPending : retry
+    Paid --> Shipped : dispatch
+    Shipped --> Delivered : delivery
+    Created --> Cancelled : cancel
+    PaymentPending --> Cancelled : cancel
+    Delivered --> [*]
+    Cancelled --> [*]
+```
 
-41. Entity Relationship Diagram
+---
 
-Declaration:
+## 7. Entity-Relationship Diagrams
 
+### Writing Cardinality Between Tables
+
+| Symbol | Meaning |
+|---|---|
+| `\|\|` | Exactly one |
+| `o\|` | Zero or one |
+| `\|{` | One or many |
+| `o{` | Zero or many |
+
+**How to write it:**
+```
+```mermaid
 erDiagram
+    USER ||--o{ ORDER : places
+    ORDER ||--|{ ORDER_ITEM : contains
+    PRODUCT ||--o{ ORDER_ITEM : included_in
+```
+```
 
-Basic:
-
+**What it renders as:**
+```mermaid
 erDiagram
-USER ||--o{ ORDER : places
+    USER ||--o{ ORDER : places
+    ORDER ||--|{ ORDER_ITEM : contains
+    PRODUCT ||--o{ ORDER_ITEM : included_in
+```
 
-⸻
+### Writing Table Attributes and Keys
 
-42. ER Diagram Cardinality
+Key markers: `PK` = Primary Key, `FK` = Foreign Key, `UK` = Unique Key.
 
-Common symbols:
-
-||     exactly one
-o|     zero or one
-|{     one or many
-o{     zero or many
-
-Examples:
-
+**How to write it:**
+```
+```mermaid
 erDiagram
-USER ||--o{ ORDER : places
-ORDER ||--|{ ORDER_ITEM : contains
-PRODUCT ||--o{ ORDER_ITEM : included_in
+    USER {
+        bigint id PK
+        varchar name
+        varchar email UK
+    }
+    ORDER {
+        bigint id PK
+        bigint user_id FK
+        decimal amount
+        varchar status
+    }
+    USER ||--o{ ORDER : places
+```
+```
 
-⸻
-
-43. ER Diagram Attributes
-
+**What it renders as:**
+```mermaid
 erDiagram
-USER {
-bigint id PK
-varchar name
-varchar email UK
-}
-ORDER {
-bigint id PK
-bigint user_id FK
-decimal amount
-}
-USER ||--o{ ORDER : places
+    USER {
+        bigint id PK
+        varchar name
+        varchar email UK
+    }
+    ORDER {
+        bigint id PK
+        bigint user_id FK
+        decimal amount
+        varchar status
+    }
+    USER ||--o{ ORDER : places
+```
 
-Common key markers:
+---
 
-PK = Primary Key
-FK = Foreign Key
-UK = Unique Key
+## 8. Other Diagram Types
 
-⸻
+### Writing a Git Graph
 
-44. Complete ER Example
-
-erDiagram
-USER {
-bigint id PK
-varchar name
-varchar email UK
-}
-ORDER {
-bigint id PK
-bigint user_id FK
-decimal amount
-varchar status
-}
-ORDER_ITEM {
-bigint id PK
-bigint order_id FK
-bigint product_id FK
-int quantity
-}
-PRODUCT {
-bigint id PK
-varchar name
-decimal price
-}
-USER ||--o{ ORDER : places
-ORDER ||--|{ ORDER_ITEM : contains
-PRODUCT ||--o{ ORDER_ITEM : included_in
-
-⸻
-
-45. Git Graph
-
-Useful when documenting Git workflows.
-
+**How to write it:**
+```
+```mermaid
 gitGraph
-commit
-commit
-branch feature
-checkout feature
-commit
-checkout main
-merge feature
-commit
+    commit
+    commit
+    branch feature
+    checkout feature
+    commit
+    checkout main
+    merge feature
+    commit
+```
+```
 
-⸻
+**What it renders as:**
+```mermaid
+gitGraph
+    commit
+    commit
+    branch feature
+    checkout feature
+    commit
+    checkout main
+    merge feature
+    commit
+```
 
-46. Pie Chart
+### Writing a Pie Chart
 
+**How to write it:**
+```
+```mermaid
 pie title Technology Usage
-"Java" : 40
-"JavaScript" : 30
-"Python" : 20
-"Other" : 10
+    "Java" : 40
+    "JavaScript" : 30
+    "Python" : 20
+    "Other" : 10
+```
+```
 
-Not particularly important for LLD, but useful for documentation.
+**What it renders as:**
+```mermaid
+pie title Technology Usage
+    "Java" : 40
+    "JavaScript" : 30
+    "Python" : 20
+    "Other" : 10
+```
 
-⸻
+### Writing a Timeline
 
-47. Timeline
-
+**How to write it:**
+```
+```mermaid
 timeline
-title Project Timeline
-2024 : Project started
-2025 : Major release
-2026 : Migration
+    title Project Timeline
+    2024 : Project started
+    2025 : Major release
+    2026 : Migration
+```
+```
 
-⸻
+**What it renders as:**
+```mermaid
+timeline
+    title Project Timeline
+    2024 : Project started
+    2025 : Major release
+    2026 : Migration
+```
 
-48. Mindmap
+### Writing a Mindmap
 
+**How to write it:**
+```
+```mermaid
 mindmap
-root((LLD))
-OOP
-SOLID
-Design Patterns
-UML
-Class Diagram
-Sequence Diagram
-Activity Diagram
-Machine Coding
+    root((LLD))
+        OOP
+        SOLID
+        Design Patterns
+        UML
+            Class Diagram
+            Sequence Diagram
+        Machine Coding
+```
+```
 
-Useful for study notes.
+**What it renders as:**
+```mermaid
+mindmap
+    root((LLD))
+        OOP
+        SOLID
+        Design Patterns
+        UML
+            Class Diagram
+            Sequence Diagram
+        Machine Coding
+```
 
-⸻
+---
 
-49. Architecture Diagram Using Flowchart
+## 9. Architecture Diagrams
 
-For backend architecture, flowchart is often the easiest option.
+Flowcharts are the easiest tool for documenting backend architecture.
 
+### Writing a System Architecture Diagram
+
+**How to write it:**
+```
+```mermaid
 flowchart LR
-Client --> LoadBalancer
-LoadBalancer --> API
-API --> AuthService
-API --> OrderService
-OrderService --> PaymentService
-OrderService --> OrderRepository
-OrderRepository --> Database
-PaymentService --> PaymentGateway
+    Client --> LoadBalancer
+    LoadBalancer --> API
+    API --> AuthService
+    API --> OrderService
+    OrderService --> PaymentService
+    OrderService --> OrderRepository
+    OrderRepository --> Database
+    PaymentService --> PaymentGateway
+```
+```
 
-⸻
+**What it renders as:**
+```mermaid
+flowchart LR
+    Client --> LoadBalancer
+    LoadBalancer --> API
+    API --> AuthService
+    API --> OrderService
+    OrderService --> PaymentService
+    OrderService --> OrderRepository
+    OrderRepository --> Database
+    PaymentService --> PaymentGateway
+```
 
-50. Backend Layered Architecture
+### Writing a Layered Architecture Diagram
 
+**How to write it:**
+```
+```mermaid
 flowchart TB
-subgraph Presentation
-Controller
-end
-subgraph Business
-Service
-end
-subgraph Data
-Repository
-end
-subgraph Storage
-Database
-end
-Controller --> Service
-Service --> Repository
-Repository --> Database
+    subgraph Presentation
+        Controller
+    end
+    subgraph Business
+        Service
+    end
+    subgraph Data
+        Repository
+    end
+    subgraph Storage
+        Database
+    end
+    Controller --> Service
+    Service --> Repository
+    Repository --> Database
+```
+```
 
-⸻
+**What it renders as:**
+```mermaid
+flowchart TB
+    subgraph Presentation
+        Controller
+    end
+    subgraph Business
+        Service
+    end
+    subgraph Data
+        Repository
+    end
+    subgraph Storage
+        Database
+    end
+    Controller --> Service
+    Service --> Repository
+    Repository --> Database
+```
 
-51. Microservice Architecture
+### Writing a Microservices Diagram
 
+**How to write it:**
+```
+```mermaid
 flowchart LR
-Client --> API_Gateway
-API_Gateway --> UserService
-API_Gateway --> OrderService
-API_Gateway --> PaymentService
-UserService --> UserDB
-OrderService --> OrderDB
-PaymentService --> PaymentDB
+    Client --> API_Gateway
+    API_Gateway --> UserService
+    API_Gateway --> OrderService
+    API_Gateway --> PaymentService
+    UserService --> UserDB
+    OrderService --> OrderDB
+    PaymentService --> PaymentDB
+```
+```
 
-⸻
-
-52. Comments
-
-Comments can be written using:
-
+**What it renders as:**
+```mermaid
 flowchart LR
-%% This is a comment
-A --> B
+    Client --> API_Gateway
+    API_Gateway --> UserService
+    API_Gateway --> OrderService
+    API_Gateway --> PaymentService
+    UserService --> UserDB
+    OrderService --> OrderDB
+    PaymentService --> PaymentDB
+```
 
-Use comments to explain complex sections of your diagram source.
+---
 
-⸻
+## 10. Syntax Tips
 
-53. IDs vs Display Text
+### Writing Comments
 
-This:
+Use `%%` — comments are never rendered.
 
+**How to write it:**
+```
+```mermaid
 flowchart LR
-UserService --> PaymentService
+    %% This is a comment
+    A --> B
+```
+```
 
-uses IDs as display names.
-
-You can separate ID and display text:
-
+**What it renders as:**
+```mermaid
 flowchart LR
-US[User Service] --> PS[Payment Service]
+    %% This is a comment
+    A --> B
+```
 
-US and PS are IDs.
+### Writing Custom Labels on Node IDs
 
-User Service and Payment Service are displayed labels.
+A bare ID doubles as its own label. To show different text than the ID, add `[...]` after it.
 
-This is very useful for large diagrams.
-
-⸻
-
-54. Special Characters / Quotes
-
-When labels contain characters that can confuse Mermaid, use quotes where supported:
-
+**How to write it:**
+```
+```mermaid
 flowchart LR
-A["POST /api/orders"] --> B["Order Service"]
+    US[User Service] --> PS[Payment Service]
+```
+```
 
-For flowcharts, square brackets are also commonly used:
-
+**What it renders as:**
+```mermaid
 flowchart LR
-A["User"]
-B["Order Service"]
+    US[User Service] --> PS[Payment Service]
+```
 
-⸻
+### Writing Labels with Special Characters
 
-55. Line Breaks in Labels
+Wrap text in quotes when it contains symbols or spaces that could confuse the parser.
 
-For flowchart labels:
+**How to write it:**
+```
+```mermaid
+flowchart LR
+    A["POST /api/orders"] --> B["Order Service"]
+```
+```
 
+**What it renders as:**
+```mermaid
+flowchart LR
+    A["POST /api/orders"] --> B["Order Service"]
+```
+
+### Writing Line Breaks Inside a Label
+
+Use `<br/>` inside the label text.
+
+**How to write it:**
+```
+```mermaid
 flowchart TD
-A["User<br/>Service"]
+    A["User<br/>Service"]
+```
+```
 
-This displays the label over multiple lines.
-
-Use this sparingly.
-
-⸻
-
-56. Clickable Links
-
-Mermaid can support links in certain diagram types/configurations.
-
-Example:
-
-flowchart LR
-A[Google]
-click A "https://google.com"
-
-For documentation, don’t overuse clickable diagrams.
-
-⸻
-
-57. Useful Special Characters
-
-Class Diagram
-
-+ public
-- private
-# protected
-~ package
-
-Relationships
-
---> association
-<|-- inheritance
-<|.. realization
-*-- composition
-o-- aggregation
-..> dependency
-
-Flowchart
-
---> arrow
---- line
--.-> dotted
-==> thick
-
-⸻
-
-58. UML Relationship Quick Reference
-
-classDiagram
-class A
-class B
-A --> B : association
-A ..> B : dependency
-A o-- B : aggregation
-A *-- B : composition
-A <|-- B : inheritance
-A <|.. B : realization
-
-Think:
-
-A --> B      A uses/knows B
-A ..> B      A depends on B
-A o-- B      A aggregates B
-A *-- B      A owns B
-A <|-- B     B extends A
-A <|.. B     B implements A
-
-⸻
-
-59. Recommended Diagram Type by Problem
-
-Requirement	Use
-Classes and relationships	classDiagram
-Object interactions	sequenceDiagram
-Object lifecycle	stateDiagram-v2
-Business/process flow	flowchart
-Database design	erDiagram
-System architecture	flowchart
-User journey	journey
-Git workflow	gitGraph
-Study topics	mindmap
-Timeline	timeline
-
-⸻
-
-60. LLD Diagram Workflow
-
-When solving an LLD problem, don’t automatically create every diagram.
-
-A practical workflow is:
-
+**What it renders as:**
+```mermaid
 flowchart TD
-A[Understand Requirements]
-B[Identify Entities]
-C[Identify Responsibilities]
-D[Identify Relationships]
-E[Create Class Diagram]
-F[Create Sequence Diagram]
-G[Implement Java Classes]
-H[Review Design]
-A --> B
-B --> C
-C --> D
-D --> E
-E --> F
-F --> G
-G --> H
+    A["User<br/>Service"]
+```
 
-Usually:
+Use sparingly.
 
-Class Diagram
-↓
-Sequence Diagram
-↓
-Java Implementation
+### Writing a Clickable Link
 
-is enough for many LLD exercises.
+**How to write it:**
+```
+```mermaid
+flowchart LR
+    A[Google]
+    click A "https://google.com"
+```
+```
 
-⸻
+**What it renders as:**
+```mermaid
+flowchart LR
+    A[Google]
+    click A "https://google.com"
+```
 
-61. Complete LLD Example
+Avoid overusing this in documentation.
 
-Class Diagram
+---
 
+## 11. Embedding in Markdown
+
+To embed any diagram in a README or Markdown file, wrap it in a fenced code block labeled `mermaid`. GitHub, GitLab, and most Markdown renderers (including VS Code's preview) will render it automatically.
+
+**How to write it:**
+````
+```mermaid
 classDiagram
-class PaymentService {
-<<interface>>
-+pay(amount: double) boolean
-}
-class CreditCardPayment {
-+pay(amount: double) boolean
-}
-class UPIPayment {
-+pay(amount: double) boolean
-}
-class OrderService {
--PaymentService paymentService
-+placeOrder(order: Order) boolean
-}
-class Order {
--Long id
--double amount
-+getAmount() double
-}
-PaymentService <|.. CreditCardPayment
-PaymentService <|.. UPIPayment
-OrderService --> PaymentService
-OrderService --> Order
+    class User {
+        -Long id
+        -String name
+        +login()
+    }
+    class Order {
+        -Long id
+        +placeOrder()
+    }
+    User "1" --> "*" Order
+```
+````
 
-Sequence Diagram
-
-sequenceDiagram
-actor User
-participant Controller
-participant OrderService
-participant PaymentService
-participant Repository
-User->>Controller: placeOrder(request)
-Controller->>OrderService: placeOrder(request)
-OrderService->>PaymentService: pay(amount)
-alt Payment successful
-PaymentService-->>OrderService: success
-OrderService->>Repository: save(order)
-Repository-->>OrderService: saved order
-OrderService-->>Controller: success
-Controller-->>User: 201 Created
-else Payment failed
-PaymentService-->>OrderService: failure
-OrderService-->>Controller: failure
-Controller-->>User: 400 Bad Request
-end
-
-⸻
-
-62. Mermaid in README.md
-
-The most common GitHub/Markdown format is:
-
+**What it renders as:**
 ```mermaid
 classDiagram
     class User {
@@ -1173,352 +1293,53 @@ classDiagram
     User "1" --> "*" Order
 ```
 
-Important:
+> **Important:** the fence must say `mermaid`, not `text` or nothing — that keyword is what tells the renderer to draw the diagram instead of showing raw code.
 
-```mermaid
+**In VS Code**, open the Markdown preview with `⌘ + Shift + V` (or `⌘ + K` then `V`) to see it rendered live as you type.
 
-not:
+---
 
-```text
+## 12. Quick Reference
 
-The word mermaid tells the Markdown renderer to interpret the block as a Mermaid diagram.
-
-⸻
-
-63. VS Code Markdown Preview
-
-Open the Markdown preview using:
-
-⌘ + Shift + V
-
-Or:
-
-⌘ + K
-then
-V
-
-Example:
-
-# UML
-```mermaid
-classDiagram
-    User --> Order
+### Class Relationships
+```
+A --> B     Association (uses)
+A <|-- B    Inheritance (B extends A)
+A <|.. B    Realization (B implements A)
+A *-- B     Composition (A owns B)
+A o-- B     Aggregation (A contains B)
+A ..> B     Dependency (temporary use)
 ```
 
-VS Code renders the Mermaid diagram in the Markdown preview.
+### Visibility
+```
++  public
+-  private
+#  protected
+~  package
+```
 
-⸻
+### Multiplicity
+```
+"1"      exactly one
+"0..1"   zero or one
+"*"      many
+"0..*"   zero or many
+"1..*"   one or many
+"2..5"   two to five
+```
 
-64. Mermaid Best Practices
+### Flowchart Connections
+```
+A --> B          arrow
+A --- B          line
+A -.-> B         dotted
+A ==> B          thick
+A -->|text| B    labeled
+```
 
-Keep diagrams readable
-
-Prefer:
-
-flowchart LR
-Client --> Controller
-Controller --> Service
-Service --> Repository
-Repository --> DB
-
-instead of putting 30+ components into one diagram.
-
-⸻
-
-Use meaningful names
-
-Prefer:
-
-OrderService
-PaymentService
-OrderRepository
-
-over:
-
-A
-B
-C
-
-⸻
-
-Don’t over-document
-
-For an LLD problem, you generally don’t need:
-
-Class Diagram
-+
-Sequence Diagram
-+
-Activity Diagram
-+
-State Diagram
-+
-Component Diagram
-+
-Deployment Diagram
-
-unless the problem actually requires them.
-
-Start with:
-
-Class Diagram
-+
-Sequence Diagram
-
-and add another diagram only when it provides useful information.
-
-⸻
-
-65. Most Important Syntax to Memorize
-
-If you remember nothing else, remember this.
-
-Class Diagram
-
-classDiagram
-class A
-class B
-A --> B
-A <|-- B
-A <|.. B
-A *-- B
-A o-- B
-A ..> B
-
-Meaning:
-
--->   Association
-<|--  Inheritance
-<|..  Implementation
-*--   Composition
-o--   Aggregation
-..>   Dependency
-
-⸻
-
-Sequence Diagram
-
-sequenceDiagram
-actor User
-participant Service
-User->>Service: Request
-Service-->>User: Response
-alt Condition
-Service-->>User: Success
-else
-Service-->>User: Failure
-end
-
-⸻
-
-State Diagram
-
-stateDiagram-v2
-[*] --> Created
-Created --> Processing
-Processing --> Completed
-Processing --> Failed
-Failed --> Processing
-Completed --> [*]
-
-⸻
-
-Flowchart
-
-flowchart LR
-A[Client] --> B[Controller]
-B --> C[Service]
-C --> D[Repository]
-D --> E[(Database)]
-
-⸻
-
-ER Diagram
-
-erDiagram
-USER ||--o{ ORDER : places
-ORDER ||--|{ ORDER_ITEM : contains
-
-⸻
-
-66. Quick Decision Guide
-
-When you ask yourself:
-
-“Which Mermaid diagram should I use?”
-
-Use this:
-
-Do I want to show classes?
-↓
-classDiagram
-Do I want to show interaction between objects?
-↓
-sequenceDiagram
-Do I want to show lifecycle/state changes?
-↓
-stateDiagram-v2
-Do I want to show a process or architecture?
-↓
-flowchart
-Do I want to show database relationships?
-↓
-erDiagram
-
-⸻
-
-67. LLD Cheat Sheet
-
-For Java LLD, these are the Mermaid constructs you will use most frequently:
-
-classDiagram
-class ClassName
-class ClassName {
--privateField: Type
-#protectedField: Type
-+publicField: Type
-+publicMethod()
--privateMethod()
-}
-Interface <|.. Implementation
-Parent <|-- Child
-ClassA --> ClassB
-ClassA ..> ClassB
-ClassA *-- ClassB
-ClassA o-- ClassB
-ClassA "1" --> "*" ClassB
-
-And for interactions:
-
-sequenceDiagram
-actor User
-participant Controller
-participant Service
-participant Repository
-User->>Controller: request
-Controller->>Service: method()
-Service->>Repository: query()
-Repository-->>Service: result
-Service-->>Controller: response
-Controller-->>User: response
-
-⸻
-
-68. Final 80–90% Reference
-
-============================================================
-MERMAID FOR LLD
-============================================================
-CLASS DIAGRAM
-------------------------------------------------------------
-classDiagram
-class User {
--Long id
--String name
-+login()
-}
-class Order {
--Long id
-+placeOrder()
-}
-User "1" --> "*" Order
-RELATIONSHIPS
-------------------------------------------------------------
-A --> B       Association
-A <|-- B     Inheritance
-A <|.. B     Realization / implements
-A *-- B      Composition
-A o-- B      Aggregation
-A ..> B      Dependency
-VISIBILITY
-------------------------------------------------------------
-+ public
-- private
-# protected
-~ package
-MULTIPLICITY
-------------------------------------------------------------
-"1"       exactly one
-"0..1"    zero or one
-"*"       many
-"0..*"    zero or many
-"1..*"    one or many
-"2..5"    two to five
-INTERFACE
-------------------------------------------------------------
-class PaymentService {
-<<interface>>
-+pay()
-}
-ABSTRACT CLASS
-------------------------------------------------------------
-class Animal {
-<<abstract>>
-+eat()
-+makeSound()*
-}
-ENUM
-------------------------------------------------------------
-class Status {
-<<enumeration>>
-PENDING
-SUCCESS
-FAILED
-}
-SEQUENCE DIAGRAM
-------------------------------------------------------------
-sequenceDiagram
-actor User
-participant Controller
-participant Service
-User->>Controller: request
-Controller->>Service: method()
-Service-->>Controller: response
-Controller-->>User: response
-ALTERNATIVE
-------------------------------------------------------------
-alt Success
-Service-->>User: Success
-else Failure
-Service-->>User: Failure
-end
-LOOP
-------------------------------------------------------------
-loop Retry
-Service->>Repository: query()
-end
-PARALLEL
-------------------------------------------------------------
-par
-Service->>UserDB: getUser()
-and
-Service->>OrderDB: getOrders()
-end
-STATE DIAGRAM
-------------------------------------------------------------
-stateDiagram-v2
-[*] --> Created
-Created --> Processing
-Processing --> Completed
-Processing --> Failed
-Failed --> Processing
-Completed --> [*]
-FLOWCHART
-------------------------------------------------------------
-flowchart LR
-Client --> Controller
-Controller --> Service
-Service --> Repository
-Repository --> Database
-DIRECTIONS
-------------------------------------------------------------
-TD   Top → Down
-TB   Top → Bottom
-BT   Bottom → Top
-LR   Left → Right
-RL   Right → Left
-FLOWCHART SHAPES
-------------------------------------------------------------
+### Flowchart Shapes
+```
 A[Rectangle]
 A(Rounded)
 A([Stadium])
@@ -1526,90 +1347,78 @@ A((Circle))
 A{Decision}
 A[(Database)]
 A{{Hexagon}}
-FLOWCHART CONNECTIONS
-------------------------------------------------------------
-A --> B       Arrow
-A --- B       Line
-A -.-> B      Dotted
-A ==> B       Thick
-A -->|text| B Label
-SUBGRAPH
-------------------------------------------------------------
-subgraph Backend
-Controller --> Service
-Service --> Repository
-end
-ER DIAGRAM
-------------------------------------------------------------
-erDiagram
-USER ||--o{ ORDER : places
-ORDER ||--|{ ORDER_ITEM : contains
-Cardinality:
+```
+
+### Flowchart Directions
+```
+TD / TB   top → bottom
+BT        bottom → top
+LR        left → right
+RL        right → left
+```
+
+### ER Cardinality
+```
 ||   exactly one
 o|   zero or one
 |{   one or many
 o{   zero or many
-README
-------------------------------------------------------------
-```mermaid
-classDiagram
-    class User
+```
 
-VS CODE PREVIEW
+### Diagram Selection Guide
 
-⌘ + Shift + V
+| I want to show... | Use |
+|---|---|
+| Classes and relationships | `classDiagram` |
+| Object interactions | `sequenceDiagram` |
+| Object lifecycle / states | `stateDiagram-v2` |
+| Business/process flow or architecture | `flowchart` |
+| Database design | `erDiagram` |
+| User journey | `journey` |
+| Git workflow | `gitGraph` |
+| Study/topic overview | `mindmap` |
+| Chronological events | `timeline` |
 
-or
+### LLD Priority
 
-⌘ + K → V
-
-============================================================
-LLD PRIORITY
-
-1. classDiagram       ★★★★★
-2. sequenceDiagram    ★★★★★
-3. flowchart          ★★★★
-4. stateDiagram-v2    ★★★
-5. erDiagram          ★★★
-6. gitGraph           ★
-7. mindmap            ★
-
-============================================================
+| Rank | Diagram | Priority |
+|---|---|---|
+| 1 | `classDiagram` | ★★★★★ |
+| 2 | `sequenceDiagram` | ★★★★★ |
+| 3 | `flowchart` | ★★★★ |
+| 4 | `stateDiagram-v2` | ★★★ |
+| 5 | `erDiagram` | ★★★ |
+| 6 | `gitGraph` | ★ |
+| 7 | `mindmap` | ★ |
 
 ---
-# 69. Recommended Learning Order
-For UML + Java LLD, learn Mermaid in this order:
-```text
-1. classDiagram
-       ↓
-2. Relationships
-       ↓
-3. Multiplicity
-       ↓
-4. sequenceDiagram
-       ↓
-5. stateDiagram-v2
-       ↓
-6. flowchart
-       ↓
-7. erDiagram
-       ↓
-8. Other Mermaid diagrams as needed
 
-The Mermaid syntax is secondary.
+## Recommended Workflow for LLD Problems
 
-The primary goal is understanding:
+**How to write it:**
+```
+```mermaid
+flowchart TD
+    A[Understand Requirements] --> B[Identify Entities]
+    B --> C[Identify Responsibilities]
+    C --> D[Identify Relationships]
+    D --> E[Create Class Diagram]
+    E --> F[Create Sequence Diagram]
+    F --> G[Implement Classes]
+    G --> H[Review Design]
+```
+```
 
-UML
- ↓
-Design
- ↓
-Relationships
- ↓
-Responsibilities
- ↓
-Interactions
- ↓
-Java implementation
+**What it renders as:**
+```mermaid
+flowchart TD
+    A[Understand Requirements] --> B[Identify Entities]
+    B --> C[Identify Responsibilities]
+    C --> D[Identify Relationships]
+    D --> E[Create Class Diagram]
+    E --> F[Create Sequence Diagram]
+    F --> G[Implement Classes]
+    G --> H[Review Design]
+```
 
-Once these concepts are clear, Mermaid becomes just the notation used to communicate your design.
+In short: **Class Diagram → Sequence Diagram → Implementation** covers most exercises. Add a state or ER diagram only when it adds real value — don't over-document.
